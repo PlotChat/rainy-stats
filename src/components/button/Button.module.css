@@ -1,0 +1,4 @@
+.sm{
+    width: clamp(5rem, 4.4375rem + 2.8125vw, 7.8125rem);
+    font-size: var(--step-0);
+}

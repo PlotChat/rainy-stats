@@ -1,16 +1,28 @@
 import React from "react";
-import "./card.module.css";
+import styles from "./Card.module.css";
 
-type CardProps = React.ComponentProps<"div">;
+type CardSize = "card--md" | "card--sm" | "card--lg";
+
+interface CardProps extends React.ComponentProps<"div"> {
+	size?: CardSize;
+}
 
 const Card = ({
 	className = "",
 	id,
-	children
+	size = "card--md",
+	children,
+	...rest
 }: CardProps) => {
-	return <div className={`card ${className}`} id={id}>
-        {children}
-    </div>;
+	return (
+		<div
+			{...rest}
+			className={`${className} ${styles.card} ${styles[size]}`.trim()}
+			id={id}
+		>
+			{children}
+		</div>
+	);
 };
 
 export default Card;

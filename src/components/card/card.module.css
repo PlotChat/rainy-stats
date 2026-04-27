@@ -1,3 +1,7 @@
-.card{
-    
+.card {
+    border-radius: var(--radius-md);
+
+	background: var(--gray-200);
+    backdrop-filter: blur(1rem) opacity(0.5);
+    -webkit-backdrop-filter: blur(10px);   
 }
