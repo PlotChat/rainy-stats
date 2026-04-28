@@ -11,7 +11,7 @@ interface WidgetProps extends Omit<React.ComponentProps<"div">, "className"> {
     widget?: WidgetType;
 	className?: string;
 	variant?: WidgetVariantType;
-	key?: string;
+	key?: string | number;
 }
 
 const Widget = ({ widget, className = "", variant = "default" }: WidgetProps) => {

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Dashboard.module.css";
 import { clsx } from "../../utils/clsx";
-import type { WidgetListType } from "../../types/widget/WidgetListType";
-import { getCurrentWidgets } from "../../data/getCurrentWidgets";
-import currentWidgetsData from "../../data/currentWidgets";
 import Widget from "../../components/widget/Widget";
+import { useWidgets } from "../../context/Widgets/WidgetsContext";
 
 type DashboardVariantType = "grid";
 
@@ -23,12 +21,9 @@ const Dashboard = ({
 	children,
 	...rest
 }: DashboardProps) => {
-	const [widgets, setWidgets] = useState<WidgetListType>(() =>
-		getCurrentWidgets(currentWidgetsData),
-	);
-
-	const widgetsComponents = widgets.map((w) => (
-		<Widget widget={w} className={clsx("dashboard-widget")}></Widget>
+	const { widgets } = useWidgets();
+	const widgetsComponents = widgets.map((w, index) => (
+		<Widget key={index} widget={w} className={clsx("dashboard-widget")}></Widget>
 	));
 
 	return (
