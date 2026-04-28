@@ -30,7 +30,7 @@ const CardImage = ({
 	return (
 		<Card
 			{...rest}
-			className={clsx(styles.card, styles[variant], className)}
+			className={clsx(styles.cardImage, styles[variant], className)}
 			onClick={onClick}
 		>
 			<div className={styles.imageWrapper}>
