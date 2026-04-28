@@ -38,7 +38,7 @@ const Dialog = ({
                     )}
                     
                     <Base.Dialog.Description className={styles.Description}>
-                        {children}
+                        {children || "This is a sample description"}
                     </Base.Dialog.Description>
                     
                     <div className={styles.Actions}>
