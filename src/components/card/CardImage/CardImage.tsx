@@ -1,27 +1,24 @@
 import React from "react";
-import Card from "../Card";
+import Card, { type CardProps } from "../Card";
 import styles from "./CardImage.module.css";
 import { clsx } from "../../../utils/clsx";
 
 type CardImageVariant = "column" | "row";
-type CardImageSize = "sm" | "md" | "lg";
+// type CardImageSize = "sm" | "md" | "lg";
 
-interface CardImageProps extends Omit<
-	React.ComponentProps<"img">,
-	"className"
-> {
-	className?: string;
+export interface CardImageProps extends CardProps {
 	variant?: CardImageVariant;
-	size?: CardImageSize;
+	// size?: CardImageSize;
+	alt: string;
+	src: string;
 	title?: string;
 	body?: string;
-	onClick?: () => void;
 }
 
 const CardImage = ({
 	className = "",
 	variant = "column",
-	size = "sm",
+	// size = "sm",
 	alt,
 	src,
 	title,
@@ -33,15 +30,15 @@ const CardImage = ({
 	return (
 		<Card
 			{...rest}
-			className={clsx(styles.card, styles[variant], styles[size], className)}
+			className={clsx(styles.card, styles[variant], className)}
 			onClick={onClick}
 		>
 			<div className={styles.imageWrapper}>
 				<img alt={alt} src={src}></img>
 			</div>
 			<div className={styles.contentWrapper}>
-				<div className={styles.title}>{title}</div>
-				<div className={styles.content}>{body}</div>
+				<h3 className={styles.title}>{title}</h3>
+				<p className={styles.content}>{body}</p>
 				<div className={styles.other}>{children}</div>
 			</div>
 		</Card>

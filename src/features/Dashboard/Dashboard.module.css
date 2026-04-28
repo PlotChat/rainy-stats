@@ -1,0 +1,26 @@
+/* If your dashboard is wrapped in a main container, put this on the parent. 
+   If not, you can safely put it directly on the dashboard since its width is 100% */
+.dashboard {
+    /* 1. Define the container so 100cqw actually works! */
+    container-type: inline-size; 
+
+    display: grid;
+    /* 2. You have 8 columns */
+    grid-template-columns: repeat(8, 1fr);
+    
+    /* 3. The Magic Math */
+    /* (100% of container - (7 gaps * size of gap)) divided by 8 columns */
+    grid-auto-rows: calc((100cqw - (7 * var(--space-s))) / 8);
+    
+    grid-auto-flow: dense;
+    gap: var(--space-s);
+    
+    /* The rest of your code is perfectly fine */
+    width: clamp(18.125rem, -1.85rem + 99.875vw, 118rem);
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0 auto;
+
+    background-color: var(--gray-500);
+    backdrop-filter: brightness(50%);
+}
