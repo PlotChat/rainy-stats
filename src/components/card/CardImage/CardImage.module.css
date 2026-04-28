@@ -51,7 +51,7 @@ img {
 	flex-direction: row;
 
 	.title {
-		font-size: var(--step--1);
+		font-size: var(--step-1);
 	}
 
 	.content {
