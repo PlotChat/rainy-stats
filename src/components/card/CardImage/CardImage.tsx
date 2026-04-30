@@ -1,4 +1,3 @@
-import React from "react";
 import Card, { type CardProps } from "../Card";
 import styles from "./CardImage.module.css";
 import { clsx } from "../../../utils/clsx";

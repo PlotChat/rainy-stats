@@ -31,7 +31,6 @@ const useAddWidget = () => {
 			}
 
 			newWidget = {
-                id: crypto.randomUUID(),
 				type: "CardImage", 
 				colSpan,
 				rowSpan,

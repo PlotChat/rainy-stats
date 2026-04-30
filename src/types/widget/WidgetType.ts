@@ -3,7 +3,6 @@ import type { CardImageProps } from "../../components/card/CardImage/CardImage";
 
 export type WidgetType =
 	| {
-			id: string,
 			type: "Card";
 			colSpan: number;
 			rowSpan: number;
@@ -11,7 +10,6 @@ export type WidgetType =
 			isPreview: boolean;
 	  }
 	| {
-			id: string,
 			type: "CardImage";
 			colSpan: number;
 			rowSpan: number;
