@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./Dashboard.module.css";
 import { clsx } from "../../utils/clsx";
-import Widget from "../../components/widget/Widget";
-import { useWidgets } from "../../context/Widgets/WidgetsContext";
 
 export interface DashboardStyles extends React.CSSProperties {
     "--grid-cols"?: number;
@@ -36,11 +34,6 @@ const Dashboard = (props: DashboardProps) => {
 		...rest
 	} = props;
 
-	const { widgets } = useWidgets();
-	const widgetsComponents = widgets.map((w, index) => (
-		<Widget key={index} widget={w} className={clsx("dashboardWidget")}></Widget>
-	));
-
 	const customStyles: DashboardStyles = {};
 
 	if (props.variant === "grid") {
@@ -53,8 +46,7 @@ const Dashboard = (props: DashboardProps) => {
 			className={clsx(styles.dashboard, styles[variant], className)}
 			{...rest}
 		>
-			{widgetsComponents}
-			<div className="others">{children}</div>
+			{children}
 		</div>
 	);
 };
