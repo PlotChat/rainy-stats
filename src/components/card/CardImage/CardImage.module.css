@@ -1,3 +1,4 @@
+/* Base Styling */
 .cardImage {
 	display: flex;
 }
@@ -5,26 +6,44 @@
 .title,
 .content {
 	overflow: hidden;
-	min-width: 0;
+}
+
+.title{
+	font-size: clamp(0.4375rem, 0.4103rem + 2.906cqi, 1.5rem);
+	color: var(--blue);
+}
+
+.content {
+	font-size: clamp(0.3646rem, 0.3432rem + 2.2849cqi, 1.2rem);
+	color: var(--blue);
+	font-weight: 400;
+	margin: 0;
+}
+
+.contentWrapper {
+	container-type: inline-size;
+	padding: var(--internal-padding);
 }
 
 img {
+	display: block;
+
 	width: 100%;
 	height: 100%;
+	border-radius: var(--radius-lg);
+
 	object-fit: cover;
 }
 
+/* Variant styling */
+.frostedGlass{
+	background-color: var(--bg-surface);
+}
+
+/* Direction styling */
+
 .column {
 	flex-direction: column;
-
-	.title {
-		font-size: var(--step--1);
-	}
-
-	.content {
-		font-size: var(--step--2);
-		margin: 0;
-	}
 
 	> .imageWrapper {
 		flex: 2;
@@ -32,10 +51,6 @@ img {
 		padding: var(--space-2xs);
 		padding-bottom: 0;
 		min-height: 0;
-
-		img {
-			border-radius: var(--radius-md);
-		}
 	}
 
 	.contentWrapper {
@@ -50,24 +65,11 @@ img {
 .row {
 	flex-direction: row;
 
-	.title {
-		font-size: var(--step-1);
-	}
-
-	.content {
-		font-size: var(--step--2);
-		margin: 0;
-	}
-
 	> .imageWrapper {
 		flex: 2;
 		height: 100%;
 		padding: var(--space-2xs);
 		min-width: 0;
-
-		img {
-			border-radius: var(--radius-md);
-		}
 	}
 
 	.contentWrapper {
@@ -78,15 +80,4 @@ img {
 		min-width: 0;
 		overflow: hidden;
 	}
-}
-
-.contentWrapper {
-	padding: var(--internal-padding);
-}
-
-img {
-	width: 100%;
-	height: 100%;
-	display: block;
-	object-fit: cover;
 }

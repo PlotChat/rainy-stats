@@ -10,7 +10,6 @@ export interface CardProps extends React.ComponentProps<"div"> {
 const Card = ({
 	className = "",
 	id,
-	// size = "card--md",
 	children,
 	...rest
 }: CardProps) => {
