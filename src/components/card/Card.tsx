@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Card.module.css";
+import { clsx } from "../../utils/clsx";
 
 type CardSize = "card--md" | "card--sm" | "card--lg";
 
@@ -16,7 +17,7 @@ const Card = ({
 	return (
 		<div
 			{...rest}
-			className={`${className} ${styles.card}`.trim()}
+			className={clsx(className, styles.card)}
 			id={id}
 		>
 			{children}
