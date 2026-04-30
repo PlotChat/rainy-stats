@@ -6,6 +6,8 @@ export interface DialogProps extends React.ComponentProps<"button"> {
     triggerText?: string;
     dialogTitle?: string;
     children?: React.ReactNode;
+    open?: boolean;                           
+    onOpenChange?: (open: boolean) => void;
 }
 
 const Dialog = ({
@@ -13,14 +15,14 @@ const Dialog = ({
     triggerText = "Click me!",
     dialogTitle = "Title",
     children,
-    ref,
+    open,                                     // <--- EXTRACT THESE
+    onOpenChange,
     ...rest 
 }: DialogProps) => {
     
     return (
-        <Base.Dialog.Root>
+        <Base.Dialog.Root open={open} onOpenChange={onOpenChange}>
             <Base.Dialog.Trigger 
-                ref={ref} 
                 {...rest} 
                 className={clsx(styles.Button, className)}
             >
