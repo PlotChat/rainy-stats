@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./app.module.css";
 import appStyles from "./app.module.css";
 import mainStyles from "./main.module.css";
@@ -13,8 +12,11 @@ const App = () => {
 
 	return (
 		<div className={appStyles.app}>
+			<Button>Click to add a Card</Button>
 			<main className={mainStyles.main}>
-				<Dashboard></Dashboard>
+				<Dashboard variant="grid" gridCols={8}>
+					
+				</Dashboard>
 			</main>
 			<Dialog>
 				<Button
@@ -34,7 +36,7 @@ const App = () => {
 						},
 					])}
 				>
-					Add a Widget
+					Add a Card
 				</Button>
 			</Dialog>
 		</div>
