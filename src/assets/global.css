@@ -16,11 +16,6 @@
   }
 }
 
-html {
-  /* Resize font size relative to rem for better styling */
-  font-size: 62.5%;
-}
-
 body {
   /* Apply new font size rule */
   font-size: 1.6rem;
@@ -57,6 +52,15 @@ h1, h2, h3, h4, h5, h6 {
 /* 10. Create a root stacking context */
 #root, #__next {
   isolation: isolate;
+}
+
+*{
+  color: var(--text-main);
+  font-family: var(--font-main);
+}
+
+p{
+  font-weight: 500;
 }
 
 /* End of CSS reset */

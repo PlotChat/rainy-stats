@@ -1,9 +1,0 @@
-.main{
-    container-type: inline-size;
-    
-    width: clamp(18.125rem, -1.85rem + 99.875vw, 118rem);
-    padding: var(--space-xs);
-
-    background-color: gray;
-    margin: 0 auto;
-}

@@ -1,7 +1,6 @@
 .card {
-    border-radius: var(--radius-md);
+    border: 0 solid;
+    border-radius: var(--radius-xlg);
 
-	background: var(--gray-200);
-    backdrop-filter: blur(1rem) opacity(0.5);
-    -webkit-backdrop-filter: blur(10px);   
+    background-color: var(--ghost-lighter-gray);
 }

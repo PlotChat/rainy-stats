@@ -2,5 +2,6 @@
     margin: 0 auto;
     padding: var(--space-s);
     min-height: 100dvh;
-    
+
+    background-color: var(--bg-body);
 }

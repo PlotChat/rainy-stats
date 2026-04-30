@@ -1,42 +1,42 @@
-/* src/assets/styles/variables.css */
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
 	/* =========================================
      1. BASE COLORS
   ========================================= */
-	--gray-50: #f9fafb;
-	--gray-100: #f3f4f6;
-	--gray-200: #e5e7eb;
-	--gray-500: #6b7280;
-	--gray-800: #1f2937;
-	--gray-900: #111827;
+	--lighter-gray: #E8EDF2;
+	--ghost-lighter-gray: #d9dee4a7;
 
-	--brand-light: #60a5fa; /* Blue 400 */
-	--brand-main: #3b82f6; /* Blue 500 */
-	--brand-dark: #2563eb; /* Blue 600 */
+	--darker-blue: #134153;
+	--dark-blue: #175C67;
+	--blue: #3396a5;
+	--accent-blue: #40ADBE;
+	--light-blue: #78C6D3;
 
-	--color-white: #ffffff;
-	--color-black: #000000;
+	--white: #ffffff;
+	--black: #000000;
 
 	/* =========================================
      2. SEMANTIC COLORS
   ========================================= */
-	--bg-body: var(--gray-50);
-	--bg-surface: var(--color-white); /* For cards, modals, etc. */
+	--bg-body: var(--lighter-gray);
+	--bg-surface: var(--ghost-lighter-gray); /* For cards, modals, etc. */
 
-	--text-main: var(--gray-900);
-	--text-muted: var(--gray-500);
-	--text-inverse: var(--color-white);
+	--text-main: var(--blue);
+	--text-muted: var(--darker-blue);
 
-	--border-light: var(--gray-200);
-	--border-focus: var(--brand-light);
+	--border-light: var(--light-gray);
+	--border-focus: var(--light-blue);
 
-	--accent-primary: var(--brand-main);
-	--accent-hover: var(--brand-dark);
+	--accent-primary: var(--light-blue);
+	--accent-hover: var(--lighter-blue);
 
 	/* =========================================
      3. TYPOGRAPHY
   ========================================= */
+	--font-main: "Montserrat", sans-serif; 
+
 	--step--2: clamp(0.5208rem, 0.465rem + 0.2792vw, 0.8rem);
 	--step--1: clamp(0.625rem, 0.55rem + 0.375vw, 1rem);
 	--step-0: clamp(0.75rem, 0.65rem + 0.5vw, 1.25rem);
@@ -75,20 +75,14 @@
 	/* =========================================
      5. BORDERS & SHADOWS
   ========================================= */
-	--radius-sm: 4px;
-	--radius-md: 8px;
-	--radius-lg: 12px;
-	--radius-full: 9999px; /* Pill shape */
+	--radius-sm: .25rem;
+	--radius-md: .5rem;
+	--radius-lg: .75rem;
+	--radius-xlg: 1rem;
+	--radius-full: 624.9375rem; /* Pill shape */
 
 	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	--shadow-lg:
 		0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-
-	/* =========================================
-     6. GRID
-  ========================================= */
-	--grid-max-width: 77.5rem;
-	--grid-gutter: var(--space-s-l, clamp(0.75rem, 0.1413rem + 3.0435vw, 2.5rem));
-	--grid-columns: 12;
 }
