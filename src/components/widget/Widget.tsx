@@ -10,7 +10,6 @@ type WidgetVariantType = "default";
 
 interface WidgetProps extends Omit<React.ComponentProps<"div">, "className"> {
 	widget?: WidgetType;
-	mode?: "default" | "edit";
 	className?: string;
 	variant?: WidgetVariantType;
 	widgetIndex: number;

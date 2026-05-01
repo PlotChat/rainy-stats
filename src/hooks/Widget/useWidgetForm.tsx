@@ -1,11 +1,11 @@
 import { useState } from "react";
-import type { WidgetType } from "../types/widget/WidgetType";
+import type { WidgetType } from "../../types/widget/WidgetType";
 
-const useAddWidget = () => {
+const useWidgetForm = () => {
 	const [tempWidget, setTempWidget] = useState<WidgetType>();
 	const [errorMsg, setErrorMsg] = useState<string>("");
 
-	const handleAddWidget = (formData: FormData) => {
+	const handleForm = (formData: FormData) => {
 		const data = Object.fromEntries(formData);
 		const { type } = data;
 
@@ -31,23 +31,22 @@ const useAddWidget = () => {
 			}
 
 			newWidget = {
-				type: "CardImage", 
+				type: "CardImage",
 				colSpan,
 				rowSpan,
 				attribute: { title, content, src, alt },
-                isPreview: false,
+				isPreview: false,
 			};
-
 		} else {
 			setErrorMsg("This widget type does not exist.");
 			return;
 		}
 
-        setErrorMsg("");
+		setErrorMsg("");
 		setTempWidget(newWidget);
 	};
 
-	return { errorMsg, tempWidget, handleAddWidget };
+	return { errorMsg, tempWidget, handleForm };
 };
 
-export default useAddWidget;
+export default useWidgetForm;
