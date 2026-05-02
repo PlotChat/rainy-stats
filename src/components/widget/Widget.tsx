@@ -1,7 +1,7 @@
 import React from "react";
 import { clsx } from "../../utils/clsx";
 import styles from "./Widget.module.css";
-import type { WidgetType } from "../../types/widget/WidgetType";
+import type { WidgetsDirectionType, WidgetType } from "../../types/widget/WidgetType";
 import Card from "../card/Card";
 import CardImage from "../card/CardImage/CardImage";
 import { motion } from "framer-motion";
@@ -14,19 +14,12 @@ interface WidgetProps extends Omit<React.ComponentProps<"div">, "className"> {
 	variant?: WidgetVariantType;
 	widgetIndex: number;
 	onClickEdges?: (
-		e: React.MouseEvent,
 		widgetIndex: number,
-		direction: "left" | "right",
-	) => void;
-	onHoverEdges?: (
-		e: React.MouseEvent,
-		widgetIndex: number,
-		direction: "left" | "right",
+		direction: WidgetsDirectionType,
 	) => void;
 }
 
 const Widget = ({
-	onHoverEdges,
 	onClickEdges,
 	widget,
 	widgetIndex,
@@ -61,8 +54,7 @@ const Widget = ({
 		>
 			{!widget.isPreview && (
 				<div
-					onMouseOver={(e) => onHoverEdges?.(e, widgetIndex, "left")}
-					onClick={(e) => onClickEdges?.(e, widgetIndex, "left")}
+					onClick={() => onClickEdges?.(widgetIndex, "left")}
 					className={clsx(styles.edge, styles.edgeLeft)}
 				></div>
 			)}
@@ -71,8 +63,7 @@ const Widget = ({
 
 			{!widget.isPreview && (
 				<div
-					onMouseOver={(e) => onHoverEdges?.(e, widgetIndex, "right")}
-					onClick={(e) => onClickEdges?.(e, widgetIndex, "right")}
+					onClick={() => onClickEdges?.(widgetIndex, "right")}
 					className={clsx(styles.edge, styles.edgeRight)}
 				></div>
 			)}
