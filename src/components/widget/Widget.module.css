@@ -25,9 +25,9 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: clamp(0.125rem, 0.125rem + 2.3333cqi, 1rem);
-
-	/* background-color: red; */
+	width: clamp(0.875rem, 0.4659rem + 1.8182cqi, 1.875rem);
+	background-color: var(--blue);
+	filter: opacity(45%);
 
 	&.edgeLeft {
 		border-radius: var(--radius-xlg) 0 0 var(--radius-xlg);
