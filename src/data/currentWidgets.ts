@@ -1,4 +1,4 @@
-import type { WidgetListType } from "../types/widget/WidgetListType";
+import type { WidgetListType } from "../features/WidgetSelector/types/WidgetListType";
 
 const currentWidgets: WidgetListType = [
 	{
@@ -12,7 +12,7 @@ const currentWidgets: WidgetListType = [
 			src: "https://i.pinimg.com/736x/15/d4/d5/15d4d5329b30ef778ded24b1c7c713e1.jpg",
 			alt: "Flower",
 		},
-		isPreview: false
+		isPreview: false,
 	},
 	{
 		type: "CardImage",
@@ -25,7 +25,7 @@ const currentWidgets: WidgetListType = [
 			src: "https://i.pinimg.com/736x/15/d4/d5/15d4d5329b30ef778ded24b1c7c713e1.jpg",
 			alt: "Flower",
 		},
-		isPreview: false
+		isPreview: false,
 	},
 	{
 		type: "CardImage",
@@ -38,7 +38,7 @@ const currentWidgets: WidgetListType = [
 			src: "https://i.pinimg.com/736x/15/d4/d5/15d4d5329b30ef778ded24b1c7c713e1.jpg",
 			alt: "Flower",
 		},
-		isPreview: false
+		isPreview: false,
 	},
 ];
 
