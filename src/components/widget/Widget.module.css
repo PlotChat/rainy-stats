@@ -23,12 +23,18 @@
 
 .edge {
 	position: absolute;
+	display: grid;
+	place-items: center;
+
 	top: 0;
 	bottom: 0;
-	width: clamp(0.875rem, 0.4659rem + 1.8182cqi, 1.875rem);
-	background-color: var(--blue);
-	filter: opacity(45%);
+	width: clamp(0.875rem, 0.2102rem + 2.9545cqi, 2.5rem);
 
+	filter: opacity(58%);
+	overflow: hidden;
+	background-color: var(--blue);
+	cursor: pointer;
+	
 	&.edgeLeft {
 		border-radius: var(--radius-xlg) 0 0 var(--radius-xlg);
 		left: 0;
@@ -37,5 +43,10 @@
 	&.edgeRight {
 		border-radius: 0 var(--radius-xlg) var(--radius-xlg) 0;
 		right: 0;
+	}
+
+	>span{
+		font-size: clamp(0.864rem, -0.2483rem + 127.1192cqi, 2.9297rem);
+		color: white;
 	}
 }
