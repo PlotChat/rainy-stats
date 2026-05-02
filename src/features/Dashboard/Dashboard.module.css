@@ -5,9 +5,9 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(var(--grid-cols), minmax(0, 1fr));
+	grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
 	grid-auto-rows: calc(
-		(100cqw - (calc(var(--grid-cols) - 1) * var(--space-xs))) / var(--grid-cols)
+		(100cqw - (calc(var(--grid-columns) - 1) * var(--space-xs))) / var(--grid-columns)
 	);
 
 	gap: var(--space-s) var(--space-s);

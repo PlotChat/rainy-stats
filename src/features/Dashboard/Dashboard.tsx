@@ -3,7 +3,7 @@ import styles from "./Dashboard.module.css";
 import { clsx } from "../../utils/clsx";
 
 export interface DashboardStyles extends React.CSSProperties {
-    "--grid-cols"?: number;
+    "--grid-columns"?: number;
 }
 
 type DashboardVariantType = "grid";
@@ -21,7 +21,7 @@ interface DashboardBaseProps extends Omit<
 // Grid variant props
 interface DashboardGridProps extends DashboardBaseProps {
 	variant?: "grid";
-	gridCols: number;
+	gridColumns: number;
 }
 
 type DashboardProps = DashboardGridProps;
@@ -37,7 +37,7 @@ const Dashboard = (props: DashboardProps) => {
 	const customStyles: DashboardStyles = {};
 
 	if (props.variant === "grid") {
-		customStyles["--grid-cols"] = props.gridCols || 8;
+		customStyles["--grid-columns"] = props.gridColumns || 8;
 	}
 
 	return (
