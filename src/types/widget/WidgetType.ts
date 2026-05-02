@@ -1,7 +1,14 @@
 import type { CardProps } from "../../components/card/Card";
 import type { CardImageProps } from "../../components/card/CardImage/CardImage";
 
-export type WidgetsModeType = "view" | "edit";
+export type WidgetsSelectorModeType = "view" | "edit";
+export type WidgetsDirectionType = "left" | "right";
+
+export type TempChosenWidgetType = {
+	widget?: WidgetType;
+	direction?: WidgetsDirectionType;
+	index?: number;
+} | undefined;
 
 export type BaseWidgetType = {
 	colSpan: number;
@@ -19,4 +26,4 @@ export type WidgetType = BaseWidgetType &
 				type: "CardImage";
 				attribute: CardImageProps;
 		  }
-	);
+	) | undefined;

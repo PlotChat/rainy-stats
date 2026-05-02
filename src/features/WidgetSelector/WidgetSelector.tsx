@@ -1,7 +1,9 @@
-import React from "react";
 import styles from "./WidgetSelector.module.css";
 import { clsx } from "../../utils/clsx";
 import { Button } from "@base-ui/react";
+import { useWidgetsUIContext } from "../../context/Widgets/WidgetsUIContext.tsx/WidgetsUIContext";
+import AddDialog from "../AddDialog/AddDialog";
+import useAddWidget from "../../hooks/Widget/useAddWidget";
 
 interface WidgetSelectorProps extends Omit<
 	React.ComponentProps<"div">,
@@ -16,17 +18,87 @@ const WidgetSelector = ({
 	children,
 	...rest
 }: WidgetSelectorProps) => {
-    const addWidget = () => {
-        
-    }
+	const { widgetsMode, setWidgetsMode, tempChosenWidget } = useWidgetsUIContext();
+
+	const {
+		formErrorMsg,
+		submitWidgetForm,
+		insertErrorMsg,
+		insertWidget,
+		resetAddProcess,
+	} = useAddWidget();
+
+	let editNotification;
+
+	if (formErrorMsg) {
+		editNotification = formErrorMsg;
+	} else if (insertErrorMsg) {
+		editNotification = insertErrorMsg;
+	} else if (!tempChosenWidget) {
+		editNotification = "Choose a widget";
+	} else {
+		editNotification = "Choose where to place it";
+	}
+
+	let modeBtnContent;
+	if (widgetsMode === "edit") {
+		modeBtnContent = "Apply";
+	} else if (widgetsMode === "view") {
+		modeBtnContent = "Edit";
+	}
+
+	const handleApplyChanges = () => {
+		if (!tempChosenWidget) return;
+
+		const { widget, index, direction } = tempChosenWidget;
+		if(widget === undefined) return;
+		
+		const newWidget = {...widget, isPreview: false};
+
+		const success = insertWidget(newWidget, index, direction);
+
+		if (success) setWidgetsMode("view");
+	};
+
+	const handleWidgetsModeChange = () => {
+		if (widgetsMode === "edit") {
+			handleApplyChanges();
+		} else if (widgetsMode === "view") {
+			resetAddProcess();
+			setWidgetsMode("edit");
+		}
+	};
 
 	return (
-        <div className={clsx(styles.WidgetSelector, className)} {...rest}>
-            <Button onClick={addWidget}>
-                Add new widget
-            </Button>
-            <div className="others">{children}</div>
-        </div>
+		<div className={clsx(styles.WidgetSelector, className)} {...rest}>
+			<div className={styles.btnWrapper}>
+				<Button
+					onClick={handleWidgetsModeChange}
+					className={clsx(styles.widgetsModeBtn)}
+				>
+					{modeBtnContent}
+				</Button>
+				{widgetsMode === "edit" && (
+					<Button onClick={() => setWidgetsMode("view")}>Cancel</Button>
+				)}
+
+				<div className={clsx(styles.editNotification)}>
+					{widgetsMode === "edit" && editNotification}
+				</div>
+			</div>
+
+			{widgetsMode === "edit" && (
+				<AddDialog
+					triggerText="Card"
+					dialogTitle="Add Card"
+					formAction={submitWidgetForm}
+					formError={formErrorMsg}
+					widgetType="CardImage"
+				></AddDialog>
+			)}
+
+			<div className={styles.others}>{children}</div>
+		</div>
 	);
 };
 
