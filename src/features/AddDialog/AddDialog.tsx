@@ -2,11 +2,11 @@ import { useState } from "react";
 import Dialog from "../../components/dialog/Dialog";
 import type { DialogProps } from "../../components/dialog/Dialog";
 import FormCardImage from "../../components/form/FormCardImage/FormCardImage";
-import type { WidgetType } from "../../types/widget/WidgetType";
-import styles from './AddDialog.module.css';
+import type { WidgetType } from "../WidgetSelector/types/WidgetType";
+import styles from "./AddDialog.module.css";
 
 interface AddDialogProps extends DialogProps {
-    formError?: string;
+	formError?: string;
 	widgetType: NonNullable<WidgetType>["type"];
 	formAction?: (formData: FormData) => void;
 	onSuccess?: () => void;
@@ -16,7 +16,7 @@ const AddDialog = ({
 	widgetType,
 	triggerText,
 	dialogTitle,
-    formError,
+	formError,
 	formAction,
 	onSuccess,
 	...rest
@@ -47,7 +47,7 @@ const AddDialog = ({
 			triggerText={triggerText}
 			dialogTitle={dialogTitle}
 		>
-            <div className={styles.formError}>{formError}</div>
+			<div className={styles.formError}>{formError}</div>
 			{form}
 		</Dialog>
 	);
