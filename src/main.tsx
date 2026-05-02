@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./assets/global.css";
 import "./assets/variables.css";
 import App from "./App.tsx";
-import { WidgetsDataProvider } from "./context/Widgets/WidgetsDataContext.tsx/WidgetsDataProvider.tsx";
-import { WidgetsUIProvider } from "./context/Widgets/WidgetsUIContext.tsx/WidgetsUIProvider.tsx";
+import { WidgetsDataProvider } from "./features/WidgetSelector/context/WidgetsDataContext.tsx/WidgetsDataProvider.tsx";
+import { WidgetsUIProvider } from "./features/WidgetSelector/context/WidgetsUIContext.tsx/WidgetsUIProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>

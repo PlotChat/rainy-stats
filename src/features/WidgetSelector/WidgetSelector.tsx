@@ -1,9 +1,9 @@
 import styles from "./WidgetSelector.module.css";
 import { clsx } from "../../utils/clsx";
 import { Button } from "@base-ui/react";
-import { useWidgetsUIContext } from "../../context/Widgets/WidgetsUIContext.tsx/WidgetsUIContext";
+import { useWidgetsUIContext } from "./context/WidgetsUIContext.tsx/WidgetsUIContext";
 import AddDialog from "../AddDialog/AddDialog";
-import useAddWidget from "../../hooks/Widget/useAddWidget";
+import useAddWidget from "./hooks/useAddWidget";
 
 interface WidgetSelectorProps extends Omit<
 	React.ComponentProps<"div">,
@@ -18,26 +18,26 @@ const WidgetSelector = ({
 	children,
 	...rest
 }: WidgetSelectorProps) => {
-	const { widgetsMode, setWidgetsMode, tempChosenWidget } = useWidgetsUIContext();
-
 	const {
-		formErrorMsg,
-		submitWidgetForm,
-		insertErrorMsg,
-		insertWidget,
-		resetAddProcess,
-	} = useAddWidget();
+		widgetsMode,
+		setWidgetsMode,
+		tempChosenWidget,
+		widgetInsertError,
+		widgetFormError,
+	} = useWidgetsUIContext();
+
+	const { submitWidgetForm, insertWidget, resetAddProcess } = useAddWidget();
 
 	let editNotification;
 
-	if (formErrorMsg) {
-		editNotification = formErrorMsg;
-	} else if (insertErrorMsg) {
-		editNotification = insertErrorMsg;
+	if (widgetFormError) {
+		editNotification = widgetFormError;
+	} else if (widgetInsertError) {
+		editNotification = widgetInsertError;
 	} else if (!tempChosenWidget) {
 		editNotification = "Choose a widget";
-	} else {
-		editNotification = "Choose where to place it";
+	} else if (tempChosenWidget) {
+		editNotification = "Now choose where to place it";
 	}
 
 	let modeBtnContent;
@@ -51,22 +51,30 @@ const WidgetSelector = ({
 		if (!tempChosenWidget) return;
 
 		const { widget, index, direction } = tempChosenWidget;
-		if(widget === undefined) return;
-		
-		const newWidget = {...widget, isPreview: false};
+		if (widget === undefined) return;
+
+		const newWidget = { ...widget, isPreview: false };
 
 		const success = insertWidget(newWidget, index, direction);
 
-		if (success) setWidgetsMode("view");
+		return success;
 	};
 
 	const handleWidgetsModeChange = () => {
 		if (widgetsMode === "edit") {
-			handleApplyChanges();
-		} else if (widgetsMode === "view") {
+			const success = handleApplyChanges();
+			if (success) {
+				setWidgetsMode("view");
+			}
 			resetAddProcess();
+		} else if (widgetsMode === "view") {
 			setWidgetsMode("edit");
 		}
+	};
+
+	const cancelEdit = () => {
+		resetAddProcess();
+		setWidgetsMode("view");
 	};
 
 	return (
@@ -78,9 +86,7 @@ const WidgetSelector = ({
 				>
 					{modeBtnContent}
 				</Button>
-				{widgetsMode === "edit" && (
-					<Button onClick={() => setWidgetsMode("view")}>Cancel</Button>
-				)}
+				{widgetsMode === "edit" && <Button onClick={cancelEdit}>Cancel</Button>}
 
 				<div className={clsx(styles.editNotification)}>
 					{widgetsMode === "edit" && editNotification}
@@ -92,7 +98,7 @@ const WidgetSelector = ({
 					triggerText="Card"
 					dialogTitle="Add Card"
 					formAction={submitWidgetForm}
-					formError={formErrorMsg}
+					formError={widgetFormError}
 					widgetType="CardImage"
 				></AddDialog>
 			)}
