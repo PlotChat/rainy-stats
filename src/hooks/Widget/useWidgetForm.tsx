@@ -1,18 +1,14 @@
 import { useState } from "react";
-import type { WidgetType } from "../../types/widget/WidgetType";
 
 const useWidgetForm = () => {
-	const [tempWidget, setTempWidget] = useState<WidgetType>();
-	const [errorMsg, setErrorMsg] = useState<string>("");
+	const [formErrorMsg, setFormErrorMsg] = useState<string>("");
 
 	const handleForm = (formData: FormData) => {
 		const data = Object.fromEntries(formData);
 		const { type } = data;
 
-		let newWidget: WidgetType;
-
 		if (type === null) {
-			setErrorMsg("Error when choosing widget type.");
+			setFormErrorMsg("Error when choosing widget type.");
 			return;
 		}
 
@@ -26,27 +22,25 @@ const useWidgetForm = () => {
 			const rowSpan = Number(data.rowSpan);
 
 			if (isNaN(colSpan) || isNaN(rowSpan)) {
-				setErrorMsg("Columns and rows must be valid numbers.");
+				setFormErrorMsg("Columns and rows must be valid numbers.");
 				return;
 			}
 
-			newWidget = {
-				type: "CardImage",
+			setFormErrorMsg("");
+			return {
+				type: "CardImage" as const,
 				colSpan,
 				rowSpan,
 				attribute: { title, content, src, alt },
-				isPreview: false,
+				isPreview: true,
 			};
 		} else {
-			setErrorMsg("This widget type does not exist.");
+			setFormErrorMsg("This widget type does not exist.");
 			return;
 		}
-
-		setErrorMsg("");
-		setTempWidget(newWidget);
 	};
 
-	return { errorMsg, tempWidget, handleForm };
+	return { formErrorMsg, handleForm, setFormErrorMsg };
 };
 
 export default useWidgetForm;

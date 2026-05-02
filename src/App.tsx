@@ -5,40 +5,19 @@ import Dashboard from "./features/Dashboard/Dashboard";
 import { useWidgetsDataContext } from "./context/Widgets/WidgetsDataContext.tsx/WidgetsDataContext";
 import Widget from "./components/widget/Widget";
 import useAddWidget from "./hooks/Widget/useAddWidget";
-import AddDialog from "./features/AddDialog/AddDialog";
 import { AnimatePresence } from "framer-motion";
-import { useWidgetsUIContext } from "./context/Widgets/WidgetsUIContext.tsx/WidgetsUIContext";
+import WidgetSelector from "./features/WidgetSelector/WidgetSelector";
 
 const App = () => {
-	const { widgetsMode, setWidgetsMode } = useWidgetsUIContext();
-	const { widgets, setWidgets } = useWidgetsDataContext();
-
-	const {
-		errorMsg,
-		widgetsEdgesOnClick,
-		handleForm,
-	} = useAddWidget();
+	const { widgets } = useWidgetsDataContext();
+	const { widgetsEdgesOnClick } = useAddWidget();
 
 	return (
 		<div className={appStyles.app}>
-			{errorMsg && <div className="errorMessage">{errorMsg}</div>}
-			{widgetsMode && <div className="widgetsMode">{widgetsMode}</div>}
-
-			<AddDialog
-				formAction={handleForm}
-				onSuccess={() => {
-					setWidgets((cur) => {
-						const cleanWidgets = cur.filter((w) => !w?.isPreview);
-						return [...cleanWidgets];
-					});
-
-					setWidgetsMode("edit");
-				}}
-				widgetType="CardImage"
-			></AddDialog>
+			<WidgetSelector></WidgetSelector>
 
 			<main className={mainStyles.main}>
-				<Dashboard variant="grid" gridCols={8}>
+				<Dashboard variant="grid" gridColumns={8}>
 					<AnimatePresence mode="popLayout">
 						{widgets.map((w, index) => (
 							<Widget

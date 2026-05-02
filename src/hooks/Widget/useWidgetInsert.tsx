@@ -1,14 +1,23 @@
+import { useState } from "react";
 import { useWidgetsDataContext } from "../../context/Widgets/WidgetsDataContext.tsx/WidgetsDataContext";
-import type { WidgetType } from "../../types/widget/WidgetType";
+import type {
+	WidgetsDirectionType,
+	WidgetType,
+} from "../../types/widget/WidgetType";
 
 const useWidgetInsert = () => {
-	const { setWidgets } = useWidgetsDataContext()
+	const { setWidgets } = useWidgetsDataContext();
+	const [insertErrorMsg, setInsertErrorMsg] = useState<string>("");
 
 	const insertWidget = (
 		widget: WidgetType,
-		uiIndex: number,
-		direction: "left" | "right",
+		uiIndex?: number,
+		direction?: WidgetsDirectionType,
 	) => {
+		if (uiIndex === undefined || direction === undefined) {
+			setInsertErrorMsg("No chosen place to insert widget. Choose a place.");
+			return false;
+		}
 		setWidgets((cur) => {
 			const cleanWidgets = cur.filter((w) => !w?.isPreview);
 
@@ -31,9 +40,11 @@ const useWidgetInsert = () => {
 
 			return [...before, widget, ...after];
 		});
+
+		return true;
 	};
 
-	return { insertWidget };
+	return { insertErrorMsg, insertWidget, setInsertErrorMsg };
 };
 
 export default useWidgetInsert;

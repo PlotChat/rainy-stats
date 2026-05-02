@@ -1,9 +1,12 @@
 import { createContext, use } from "react";
-import type { WidgetsModeType } from "../../../types/widget/WidgetType";
+import type { TempChosenWidgetType, WidgetsSelectorModeType } from "../../../types/widget/WidgetType";
 
 export interface WidgetsUIContextType {
-	widgetsMode: WidgetsModeType;
-	setWidgetsMode: React.Dispatch<React.SetStateAction<WidgetsModeType>>;
+	widgetsMode: WidgetsSelectorModeType;
+	setWidgetsMode: React.Dispatch<React.SetStateAction<WidgetsSelectorModeType>>;
+
+	tempChosenWidget: TempChosenWidgetType
+	setTempChosenWidget: React.Dispatch<React.SetStateAction<TempChosenWidgetType>>;
 }
 
 export const WidgetUIContext = createContext<WidgetsUIContextType | null>(null);

@@ -1,30 +1,55 @@
 import useWidgetInsert from "./useWidgetInsert";
 import useWidgetForm from "./useWidgetForm";
-import type { WidgetType } from "../../types/widget/WidgetType";
+import type { WidgetsDirectionType } from "../../types/widget/WidgetType";
+import { useWidgetsDataContext } from "../../context/Widgets/WidgetsDataContext.tsx/WidgetsDataContext";
+import { useWidgetsUIContext } from "../../context/Widgets/WidgetsUIContext.tsx/WidgetsUIContext";
 
 const useAddWidget = () => {
-	const { insertWidget } = useWidgetInsert();
-	const { errorMsg, tempWidget, handleForm } = useWidgetForm();
+	const { insertErrorMsg, setInsertErrorMsg, insertWidget } = useWidgetInsert();
+	const { formErrorMsg, setFormErrorMsg, handleForm } = useWidgetForm();
+	const { setWidgets } = useWidgetsDataContext();
+
+	const { tempChosenWidget, setTempChosenWidget } = useWidgetsUIContext();
+
+	const submitWidgetForm = (formData: FormData) => {
+		const parsedWidget = handleForm(formData);
+
+		if (parsedWidget) {
+			setWidgets((cur) => cur.filter((w) => !w?.isPreview));
+			setTempChosenWidget({ widget: parsedWidget });
+		}
+	};
 
 	const widgetsEdgesOnClick = (
-		e: React.MouseEvent,
 		widgetIndex: number,
-		direction: "left" | "right",
+		direction: WidgetsDirectionType,
 	) => {
-		e.preventDefault();
+		if (!tempChosenWidget) return;
 
-		if (!tempWidget) return;
+		setTempChosenWidget((prev) => {
+			if (!prev) return prev;
+			return { ...prev, index: widgetIndex, direction: direction };
+		});
 
-		const previewWidget: WidgetType = { ...tempWidget, isPreview: true };
-		insertWidget(previewWidget, widgetIndex, direction);
+		insertWidget(tempChosenWidget.widget, widgetIndex, direction);
+	};
+
+	const resetAddProcess = () => {
+		setFormErrorMsg("");
+		setInsertErrorMsg("");
+		setTempChosenWidget(undefined);
+
+		setWidgets((cur) => cur.filter((w) => !w?.isPreview));
 	};
 
 	return {
-		errorMsg,
-		tempWidget,
+		formErrorMsg,
+		tempChosenWidget,
+		insertErrorMsg,
 		insertWidget,
+		submitWidgetForm,
 		widgetsEdgesOnClick,
-		handleForm,
+		resetAddProcess,
 	};
 };
 
