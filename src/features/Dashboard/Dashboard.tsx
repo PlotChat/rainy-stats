@@ -35,6 +35,7 @@ const Dashboard = (props: DashboardProps) => {
 	} = props;
 
 	const customStyles: DashboardStyles = {};
+	const placeholderMsg = "There are no items in the dashboard. You can add some, though!";
 
 	if (props.variant === "grid") {
 		customStyles["--grid-columns"] = props.gridColumns || 8;
@@ -47,6 +48,12 @@ const Dashboard = (props: DashboardProps) => {
 			{...rest}
 		>
 			{children}
+
+			{children === undefined && (
+				<div className="placeholder">
+					<p>{placeholderMsg}</p>
+				</div>
+			)}
 		</div>
 	);
 };
