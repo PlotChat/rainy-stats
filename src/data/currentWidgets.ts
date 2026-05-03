@@ -1,4 +1,4 @@
-import type { WidgetListType } from "../features/WidgetSelector/types/WidgetListType";
+import type { WidgetListType } from "../types/WidgetListType";
 
 const currentWidgets: WidgetListType = [
 	{

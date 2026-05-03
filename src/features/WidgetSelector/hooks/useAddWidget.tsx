@@ -1,4 +1,4 @@
-import type { WidgetsDirectionType } from "../types/WidgetType";
+import type { WidgetsDirectionType } from "../../../types/WidgetType";
 import { useWidgetsDataContext } from "../context/WidgetsDataContext.tsx/WidgetsDataContext";
 import { useWidgetsUIContext } from "../context/WidgetsUIContext.tsx/WidgetsUIContext";
 import useWidgetForm from "./useWidgetForm";

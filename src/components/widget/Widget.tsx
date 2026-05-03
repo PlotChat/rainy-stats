@@ -1,10 +1,7 @@
 import React from "react";
 import { clsx } from "../../utils/clsx";
 import styles from "./Widget.module.css";
-import type {
-	WidgetsDirectionType,
-	WidgetType,
-} from "../../features/WidgetSelector/types/WidgetType";
+import type { WidgetsDirectionType, WidgetType } from "../../types/WidgetType";
 import Card from "../card/Card";
 import CardImage from "../card/CardImage/CardImage";
 import { motion } from "framer-motion";
@@ -16,7 +13,7 @@ interface WidgetProps extends Omit<React.ComponentProps<"div">, "className"> {
 	widget?: WidgetType;
 	className?: string;
 	variant?: WidgetVariantType;
-	widgetIndex: number;
+	widgetIndex?: number;
 	onClickEdges?: (widgetIndex: number, direction: WidgetsDirectionType) => void;
 }
 
@@ -54,7 +51,7 @@ const Widget = ({
 			}}
 			className={clsx(className, styles[variant], styles.widget)}
 		>
-			{!widget.isPreview && widgetsMode === "edit" && (
+			{!widget.isPreview && widgetsMode === "edit" && widgetIndex && (
 				<div
 					onClick={() => onClickEdges?.(widgetIndex, "left")}
 					className={clsx(styles.edge, styles.edgeLeft)}
@@ -65,7 +62,7 @@ const Widget = ({
 
 			{component}
 
-			{!widget.isPreview && widgetsMode === "edit" && (
+			{!widget.isPreview && widgetsMode === "edit" && widgetIndex && (
 				<div
 					onClick={() => onClickEdges?.(widgetIndex, "right")}
 					className={clsx(styles.edge, styles.edgeRight)}
