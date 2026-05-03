@@ -2,7 +2,7 @@ import { useState } from "react";
 import Dialog from "../../components/dialog/Dialog";
 import type { DialogProps } from "../../components/dialog/Dialog";
 import FormCardImage from "../../components/form/FormCardImage/FormCardImage";
-import type { WidgetType } from "../WidgetSelector/types/WidgetType";
+import type { WidgetType } from "../../types/WidgetType";
 import styles from "./AddDialog.module.css";
 
 interface AddDialogProps extends DialogProps {

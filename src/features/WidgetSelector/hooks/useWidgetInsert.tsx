@@ -1,5 +1,8 @@
 import { useWidgetsDataContext } from "../context/WidgetsDataContext.tsx/WidgetsDataContext";
-import type { WidgetsDirectionType, WidgetType } from "../types/WidgetType";
+import type {
+	WidgetsDirectionType,
+	WidgetType,
+} from "../../../types/WidgetType";
 import { useWidgetsUIContext } from "../context/WidgetsUIContext.tsx/WidgetsUIContext";
 
 const useWidgetInsert = () => {

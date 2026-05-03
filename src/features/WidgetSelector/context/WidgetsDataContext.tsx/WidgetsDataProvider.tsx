@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { WidgetListType } from "../../types/WidgetListType";
+import type { WidgetListType } from "../../../../types/WidgetListType";
 import currentWidgetsData from "../../../../data/currentWidgets";
 import { getCurrentWidgets } from "../../../../data/getCurrentWidgets";
 import { WidgetsDataContext } from "./WidgetsDataContext";
