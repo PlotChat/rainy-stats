@@ -1,5 +1,5 @@
 import { createContext, use } from "react";
-import type { WidgetListType } from "../../../../types/WidgetListType";
+import type { WidgetListType } from "../../../../types/widget-list-type";
 
 export interface WidgetsDataContextType {
 	widgets: WidgetListType;

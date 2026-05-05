@@ -1,7 +1,7 @@
 import type { FormProps } from "../Form";
 import Button from "../../button/Button";
 import { clsx } from "../../../utils/clsx";
-import styles from './FormCardImage.module.css';
+import styles from './form-card-image.module.css';
 import Form from "../Form";
 
 const FormCardImage = ({className = "", onSubmit, action }: FormProps) => {

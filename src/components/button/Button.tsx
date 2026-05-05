@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import * as Base from "@base-ui/react/button";
-import styles from "./Button.module.css";
+import styles from "./button.module.css";
 import { clsx } from "../../utils/clsx";
 
 type ButtonVariant = "filled" | "hollow";

@@ -2,7 +2,7 @@ import { createContext, use } from "react";
 import type {
 	TempChosenWidgetType,
 	WidgetsSelectorModeType,
-} from "../../../../types/WidgetType";
+} from "../../../../types/widget-type";
 
 export interface WidgetsUIContextType {
 	widgetsMode: WidgetsSelectorModeType;

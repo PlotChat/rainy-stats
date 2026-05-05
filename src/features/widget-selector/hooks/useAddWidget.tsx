@@ -1,4 +1,4 @@
-import type { WidgetsDirectionType } from "../../../types/WidgetType";
+import type { WidgetsDirectionType } from "../../../types/widget-type";
 import { useWidgetsDataContext } from "../context/WidgetsDataContext.tsx/WidgetsDataContext";
 import { useWidgetsUIContext } from "../context/WidgetsUIContext.tsx/WidgetsUIContext";
 import useWidgetForm from "./useWidgetForm";
@@ -20,10 +20,14 @@ const useAddWidget = () => {
 		const parsedWidget = handleWidgetForm(formData);
 
 		if (parsedWidget) {
-			if(widgets.length !== 0){
+			if (widgets.length !== 0) {
 				setWidgets((cur) => cur.filter((w) => !w?.isPreview));
-				setTempChosenWidget({ widget: parsedWidget, direction: null, index: null});
-			} else{
+				setTempChosenWidget({
+					widget: parsedWidget,
+					direction: null,
+					index: null,
+				});
+			} else {
 				setWidgets([parsedWidget]);
 			}
 		}
