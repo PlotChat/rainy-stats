@@ -13,7 +13,7 @@ export const WidgetsUIProvider = ({
 	const [widgetsMode, setWidgetsMode] =
 		useState<WidgetsSelectorModeType>("view");
 	const [tempChosenWidget, setTempChosenWidget] =
-		useState<TempChosenWidgetType>();
+		useState<TempChosenWidgetType>(null);
 	const [widgetFormError, setWidgetFormError] = useState("");
 	const [widgetInsertError, setWidgetInsertError] = useState("");
 	const [widgetEditError, setWidgetEditError] = useState("");

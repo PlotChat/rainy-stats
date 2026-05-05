@@ -6,11 +6,11 @@ export type WidgetsDirectionType = "left" | "right";
 
 export type TempChosenWidgetType =
 	| {
-			widget?: WidgetType;
+			widget: WidgetType | null;
 			direction: WidgetsDirectionType | null;
 			index: number | null;
 	  }
-	| undefined;
+	| null;
 
 export type BaseWidgetType = {
 	colSpan: number;
@@ -30,4 +30,4 @@ export type WidgetType =
 						attribute: CardImageProps;
 				  }
 			))
-	| undefined;
+	| null;

@@ -53,7 +53,7 @@ const useAddWidget = () => {
 	const resetAddProcess = () => {
 		setWidgetFormError("");
 		setWidgetInsertError("");
-		setTempChosenWidget(undefined);
+		setTempChosenWidget(null);
 
 		setWidgets((cur) => cur.filter((w) => !w?.isPreview));
 	};
