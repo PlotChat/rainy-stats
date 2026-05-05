@@ -2,16 +2,17 @@ import React from "react";
 import { clsx } from "../../../../utils/clsx";
 import styles from "./Widget.module.css";
 import type {
-	WidgetsDirectionType,
 	WidgetType,
 } from "../../../../types/widget-type";
 import Card from "../../../../components/card/Card";
 import CardImage from "../../../../components/card/card-image/CardImage";
 import { motion } from "framer-motion";
 import { useWidgetsUIContext } from "../../../widget-selector/context/widgets-ui-context/WidgetsUIContext";
-import { BiSolidCheckboxMinus } from "react-icons/bi";
+import { FiMinusSquare } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
 import Button from "../../../../components/button/Button";
+import useAddWidget from "../../../widget-selector/hooks/useAddWidget";
+import useRemoveWidget from "../../../widget-selector/hooks/useRemoveWidget";
 
 type WidgetVariantType = "default";
 
@@ -20,11 +21,9 @@ interface WidgetProps extends Omit<React.ComponentProps<"div">, "className"> {
 	className?: string;
 	variant?: WidgetVariantType;
 	widgetIndex: number;
-	onClickEdges?: (widgetIndex: number, direction: WidgetsDirectionType) => void;
 }
 
 const Widget = ({
-	onClickEdges,
 	widget,
 	widgetIndex = 0,
 	className = "",
@@ -33,6 +32,8 @@ const Widget = ({
 	let component;
 
 	const { widgetsMode } = useWidgetsUIContext();
+	const { handleAddOnClick } = useAddWidget();
+	const { handleRemoveOnClick } = useRemoveWidget();
 
 	if (!widget) return <Card></Card>;
 
@@ -61,8 +62,9 @@ const Widget = ({
 		>
 			{isEditable && (
 				<Button
-					onClick={() => onClickEdges?.(widgetIndex, "left")}
+					onClick={() => handleAddOnClick?.(widgetIndex, "left")}
 					className={clsx(styles.edge, styles.edgeLeft)}
+					intent="primary"
 				>
 					<span>+</span>
 				</Button>
@@ -72,21 +74,24 @@ const Widget = ({
 
 			{isEditable && (
 				<Button
-					onClick={() => onClickEdges?.(widgetIndex, "right")}
+					onClick={() => handleAddOnClick?.(widgetIndex, "right")}
 					className={clsx(styles.edge, styles.edgeRight)}
+					intent="primary"
 				>
 					<span>+</span>
 				</Button>
 			)}
 
-			<div className={styles.btnsWrapper}>
-				<Button className={styles.editBtn}>
-					<BiSolidCheckboxMinus />
-				</Button>
-				<Button className={styles.removeBtn}>
-					<FiEdit />
-				</Button>
-			</div>
+			{isEditable && (
+				<div className={styles.btnsWrapper}>
+					<Button className={styles.editBtn} intent="primary">
+						<FiEdit preserveAspectRatio="none" />
+					</Button>
+					<Button onClick={() => handleRemoveOnClick(widget)} className={styles.removeBtn} intent="primary">
+						<FiMinusSquare preserveAspectRatio="none" />
+					</Button>
+				</div>
+			)}
 		</motion.div>
 	);
 };
