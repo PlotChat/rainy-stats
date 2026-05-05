@@ -1,5 +1,5 @@
 import * as Base from "@base-ui/react/dialog";
-import styles from "./Dialog.module.css";
+import styles from "./dialog.module.css";
 import { clsx } from "../../utils/clsx";
 
 export interface DialogProps extends React.ComponentProps<"button"> {

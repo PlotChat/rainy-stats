@@ -2,7 +2,7 @@ import { useWidgetsDataContext } from "../context/WidgetsDataContext.tsx/Widgets
 import type {
 	WidgetsDirectionType,
 	WidgetType,
-} from "../../../types/WidgetType";
+} from "../../../types/widget-type";
 import { useWidgetsUIContext } from "../context/WidgetsUIContext.tsx/WidgetsUIContext";
 
 const useWidgetInsert = () => {

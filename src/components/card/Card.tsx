@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Card.module.css";
+import styles from "./card.module.css";
 import { clsx } from "../../utils/clsx";
 
 type CardSize = "card--md" | "card--sm" | "card--lg";

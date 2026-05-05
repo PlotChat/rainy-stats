@@ -1,9 +1,8 @@
 .widget {
 	--edge-font-size: clamp(1.1rem, 5cqi, 2.6rem);
-	--edge-width: clamp(1.25rem, 0.9rem + 1.75cqw, 3rem);
+	--edge-width: clamp(1rem, 0.7589rem + 6.4286cqi, 4.375rem);
 
-	container: inline-size;
-	container-name: widget;
+	container: widget / inline-size;
 
 	position: relative;
 	display: flex;
@@ -13,7 +12,15 @@
 
 	box-sizing: border-box;
 	background-color: var(--bg-surface);
-	/* overflow: hidden; */
+
+	border-radius: var(--radius-xlg);
+}
+
+.edit {
+	> :not(.edge, .btnsWrapper) {
+		filter: blur(0.03rem) opacity(0.6);
+		transition: filter 0.2s ease-in-out;
+	}
 }
 
 .widget > :not(.edge, .btnsWrapper) {
@@ -24,7 +31,6 @@
 }
 
 .edge {
-	container: inline-size;
 	position: absolute;
 	display: grid;
 	place-items: center;
@@ -33,41 +39,69 @@
 	bottom: 0;
 	width: var(--edge-width);
 
-	filter: opacity(58%);
-	overflow: hidden;
+	filter: opacity(0.6);
 	cursor: pointer;
-	
+	transition:
+		scale 0.2s,
+		transform 0.3s ease-in-out;
+
+	z-index: 10;
+
 	&.edgeLeft {
 		border-radius: var(--radius-xlg) 0 0 var(--radius-xlg);
 		left: 0;
+
+		&:hover {
+			transform: translateX(-5%);
+			transition: transform 0.2s ease-in-out;
+		}
 	}
 
 	&.edgeRight {
 		border-radius: 0 var(--radius-xlg) var(--radius-xlg) 0;
 		right: 0;
+
+		&:hover {
+			transform: translateX(8%);
+			transition: transform 0.2s ease-in-out;
+		}
 	}
 
-	>span{
+	> span {
 		font-size: var(--edge-font-size);
 	}
 }
 
-.btnsWrapper{
-	
-	container-type: inline-size;
+.btnsWrapper {
 	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
-	
-	gap: 0.2rem;
-	/* inset: 0 var(--edge-width) 0 var(--edge-width); */
+	gap: 0.2em;
+	inset: 0 var(--edge-width) 0 var(--edge-width);
+	z-index: 10;
 
-	left:-9999px;
+	@container widget (width < 7.5rem) {
+		flex-direction: column;
+	}
 }
 
-.editBtn, .removeBtn{
-	
-	aspect-ratio: 1/1;
+.editBtn,
+.removeBtn {
+	width: clamp(1rem, 0.8974rem + 6.5641cqi, 5rem);
+	flex-shrink: 0;
+	padding: var(--space-3xs);
+	color: var(--white);
+	filter: opacity(0.8);
+	transition: scale 0.2s;
+
+	&:hover {
+		scale: 1.05;
+	}
+
+	> svg {
+		height: 100%;
+		width: 100%;
+	}
 }

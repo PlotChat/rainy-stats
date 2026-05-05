@@ -1,3 +1,3 @@
-import type { WidgetType } from "./WidgetType";
+import type { WidgetType } from "./widget-type";
 
 export type WidgetListType = WidgetType[] | [];
