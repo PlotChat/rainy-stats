@@ -1,11 +1,17 @@
 import React from "react";
-import { clsx } from "../../utils/clsx";
+import { clsx } from "../../../../utils/clsx";
 import styles from "./Widget.module.css";
-import type { WidgetsDirectionType, WidgetType } from "../../types/WidgetType";
-import Card from "../card/Card";
-import CardImage from "../card/CardImage/CardImage";
+import type {
+	WidgetsDirectionType,
+	WidgetType,
+} from "../../../../types/WidgetType";
+import Card from "../../../../components/card/Card";
+import CardImage from "../../../../components/card/CardImage/CardImage";
 import { motion } from "framer-motion";
-import { useWidgetsUIContext } from "../../features/WidgetSelector/context/WidgetsUIContext.tsx/WidgetsUIContext";
+import { useWidgetsUIContext } from "../../../WidgetSelector/context/WidgetsUIContext.tsx/WidgetsUIContext";
+import { BiSolidCheckboxMinus } from "react-icons/bi";
+import { FiEdit } from "react-icons/fi";
+import Button from "../../../../components/button/Button";
 
 type WidgetVariantType = "default";
 
@@ -13,14 +19,14 @@ interface WidgetProps extends Omit<React.ComponentProps<"div">, "className"> {
 	widget?: WidgetType;
 	className?: string;
 	variant?: WidgetVariantType;
-	widgetIndex?: number;
+	widgetIndex: number;
 	onClickEdges?: (widgetIndex: number, direction: WidgetsDirectionType) => void;
 }
 
 const Widget = ({
 	onClickEdges,
 	widget,
-	widgetIndex,
+	widgetIndex = 0,
 	className = "",
 	variant = "default",
 }: WidgetProps) => {
@@ -38,6 +44,8 @@ const Widget = ({
 			component = <CardImage {...widget.attribute}></CardImage>;
 	}
 
+	const isEditable = !widget.isPreview && widgetsMode === "edit";
+
 	return (
 		<motion.div
 			layout
@@ -51,25 +59,34 @@ const Widget = ({
 			}}
 			className={clsx(className, styles[variant], styles.widget)}
 		>
-			{!widget.isPreview && widgetsMode === "edit" && widgetIndex && (
-				<div
+			{isEditable && (
+				<Button
 					onClick={() => onClickEdges?.(widgetIndex, "left")}
 					className={clsx(styles.edge, styles.edgeLeft)}
 				>
 					<span>+</span>
-				</div>
+				</Button>
 			)}
 
 			{component}
 
-			{!widget.isPreview && widgetsMode === "edit" && widgetIndex && (
-				<div
+			{isEditable && (
+				<Button
 					onClick={() => onClickEdges?.(widgetIndex, "right")}
 					className={clsx(styles.edge, styles.edgeRight)}
 				>
 					<span>+</span>
-				</div>
+				</Button>
 			)}
+
+			<div className={styles.btnsWrapper}>
+				<Button className={styles.editBtn}>
+					<BiSolidCheckboxMinus />
+				</Button>
+				<Button className={styles.removeBtn}>
+					<FiEdit />
+				</Button>
+			</div>
 		</motion.div>
 	);
 };
