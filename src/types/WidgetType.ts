@@ -7,8 +7,8 @@ export type WidgetsDirectionType = "left" | "right";
 export type TempChosenWidgetType =
 	| {
 			widget?: WidgetType;
-			direction?: WidgetsDirectionType;
-			index?: number;
+			direction: WidgetsDirectionType | null;
+			index: number | null;
 	  }
 	| undefined;
 
