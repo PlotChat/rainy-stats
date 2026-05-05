@@ -1,6 +1,6 @@
 import styles from "./widget-selector.module.css";
 import { clsx } from "../../utils/clsx";
-import { Button } from "@base-ui/react";
+import Button from "../../components/button/Button";
 import { useWidgetsUIContext } from "./context/widgets-ui-context/WidgetsUIContext";
 import AddDialog from "../widget-dialog/add-widget-dialog/AddWidgetDialog";
 import useAddWidget from "./hooks/useAddWidget";
@@ -79,18 +79,19 @@ const WidgetSelector = ({
 
 	return (
 		<div className={clsx(styles.WidgetSelector, className)} {...rest}>
-			<div className={styles.btnWrapper}>
+			<div className={styles.btnsWrapper}>
 				<Button
 					onClick={handleWidgetsModeChange}
 					className={clsx(styles.widgetsModeBtn)}
+					intent="primary"
 				>
 					{modeBtnContent}
 				</Button>
-				{widgetsMode === "edit" && <Button onClick={cancelEdit}>Cancel</Button>}
+				{widgetsMode === "edit" && <Button intent="primary" onClick={cancelEdit}>Cancel</Button>}
 
-				<div className={clsx(styles.editNotification)}>
-					{widgetsMode === "edit" && editNotification}
-				</div>
+			</div>
+			<div className={clsx(styles.editNotification)}>
+				{widgetsMode === "edit" && editNotification}
 			</div>
 
 			{widgetsMode === "edit" && (
