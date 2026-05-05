@@ -1,14 +1,12 @@
 import { AnimatePresence } from "framer-motion";
 import { useWidgetsDataContext } from "../../features/WidgetSelector/context/WidgetsDataContext.tsx/WidgetsDataContext";
-import useAddWidget from "../../features/WidgetSelector/hooks/useAddWidget";
 import WidgetSelector from "../../features/WidgetSelector/WidgetSelector";
-import Widget from "../../components/widget/Widget";
+import Widget from "../../features/Dashboard/components/widget/Widget";
 import Dashboard from "../../features/Dashboard/Dashboard";
-import styles from './Home.module.css';
+import styles from "./Home.module.css";
 
-const Home = () => { 
-    const { widgets } = useWidgetsDataContext();
-	const { widgetsEdgesOnClick } = useAddWidget();
+const Home = () => {
+	const { widgets } = useWidgetsDataContext();
 
 	return (
 		<div className={styles.home}>
@@ -22,7 +20,6 @@ const Home = () => {
 								key={index}
 								widget={w}
 								widgetIndex={index}
-								onClickEdges={widgetsEdgesOnClick}
 							></Widget>
 						))}
 					</AnimatePresence>
@@ -30,7 +27,6 @@ const Home = () => {
 			</main>
 		</div>
 	);
-  
-}
+};
 
-export default Home
+export default Home;
