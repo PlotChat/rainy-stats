@@ -3,7 +3,7 @@ import Dialog from "../../../components/dialog/Dialog";
 import type { DialogProps } from "../../../components/dialog/Dialog";
 import FormCardImage from "../../../components/form/form-card-image/FormCardImage";
 import type { WidgetType } from "../../../types/widget-type";
-import styles from "./AddDialog.module.css";
+import styles from "./add-widget-dialog.module.css";
 
 interface AddDialogProps extends DialogProps {
 	formError?: string;
