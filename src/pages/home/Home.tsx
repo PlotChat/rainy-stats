@@ -3,7 +3,7 @@ import { useWidgetsDataContext } from "../../features/widget-selector/context/wi
 import WidgetSelector from "../../features/widget-selector/WidgetSelector"
 import Widget from "../../features/dashboard/components/widget/Widget";
 import Dashboard from "../../features/dashboard/Dashboard";
-import styles from "./Home.module.css";
+import styles from "./home.module.css";
 
 const Home = () => {
 	const { widgets } = useWidgetsDataContext();
