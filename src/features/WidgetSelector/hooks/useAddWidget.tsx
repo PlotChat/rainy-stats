@@ -5,7 +5,7 @@ import useWidgetForm from "./useWidgetForm";
 import useWidgetInsert from "./useWidgetInsert";
 
 const useAddWidget = () => {
-	const { setWidgets } = useWidgetsDataContext();
+	const { widgets, setWidgets } = useWidgetsDataContext();
 	const { handleWidgetForm } = useWidgetForm();
 	const { insertWidget } = useWidgetInsert();
 
@@ -20,12 +20,16 @@ const useAddWidget = () => {
 		const parsedWidget = handleWidgetForm(formData);
 
 		if (parsedWidget) {
-			setWidgets((cur) => cur.filter((w) => !w?.isPreview));
-			setTempChosenWidget({ widget: parsedWidget });
+			if(widgets.length !== 0){
+				setWidgets((cur) => cur.filter((w) => !w?.isPreview));
+				setTempChosenWidget({ widget: parsedWidget, direction: null, index: null});
+			} else{
+				setWidgets([parsedWidget]);
+			}
 		}
 	};
 
-	const widgetsEdgesOnClick = (
+	const handleAddOnClick = (
 		widgetIndex: number,
 		direction: WidgetsDirectionType,
 	) => {
@@ -53,7 +57,7 @@ const useAddWidget = () => {
 	return {
 		insertWidget,
 		submitWidgetForm,
-		widgetsEdgesOnClick,
+		handleAddOnClick,
 		resetAddProcess,
 	};
 };

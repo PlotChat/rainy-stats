@@ -16,6 +16,12 @@ export interface WidgetsUIContextType {
 	widgetInsertError: string;
 	setWidgetInsertError: React.Dispatch<React.SetStateAction<string>>;
 
+	widgetEditError: string;
+	setWidgetEditError: React.Dispatch<React.SetStateAction<string>>;
+
+	widgetDeleteError: string;
+	setWidgetDeleteError: React.Dispatch<React.SetStateAction<string>>;
+
 	widgetFormError: string;
 	setWidgetFormError: React.Dispatch<React.SetStateAction<string>>;
 }
