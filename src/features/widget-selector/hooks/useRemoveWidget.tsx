@@ -1,6 +1,6 @@
 import type { WidgetType } from "../../../types/widget-type";
-import { useWidgetsDataContext } from "../context/WidgetsDataContext.tsx/WidgetsDataContext";
-import { useWidgetsUIContext } from "../context/WidgetsUIContext.tsx/WidgetsUIContext";
+import { useWidgetsDataContext } from "../context/widgets-data-context/WidgetsDataContext";
+import { useWidgetsUIContext } from "../context/widgets-ui-context/WidgetsUIContext";
 
 const useRemoveWidget = () => {
 	const { widgets, setWidgets } = useWidgetsDataContext();

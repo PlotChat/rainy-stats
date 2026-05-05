@@ -1,9 +1,7 @@
-import { useWidgetsUIContext } from "../context/WidgetsUIContext.tsx/WidgetsUIContext";
+import { useWidgetsUIContext } from "../context/widgets-ui-context/WidgetsUIContext";
 
 const useWidgetForm = () => {
-	const {
-		setWidgetFormError,
-	} = useWidgetsUIContext();
+	const { setWidgetFormError } = useWidgetsUIContext();
 
 	const handleWidgetForm = (formData: FormData) => {
 		const data = Object.fromEntries(formData);

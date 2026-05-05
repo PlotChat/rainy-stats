@@ -1,6 +1,6 @@
 import { AnimatePresence } from "framer-motion";
-import { useWidgetsDataContext } from "../../features/widget-selector/context/WidgetsDataContext.tsx/WidgetsDataContext";
-import WidgetSelector from "../../features/widget-selector/WidgetSelector";
+import { useWidgetsDataContext } from "../../features/widget-selector/context/widgets-data-context/WidgetsDataContext";
+import WidgetSelector from "../../features/widget-selector/WidgetSelector"
 import Widget from "../../features/dashboard/components/widget/Widget";
 import Dashboard from "../../features/dashboard/Dashboard";
 import styles from "./Home.module.css";
