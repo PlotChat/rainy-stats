@@ -1,4 +1,4 @@
-import styles from "./WidgetSelector.module.css";
+import styles from "./widget-selector.module.css";
 import { clsx } from "../../utils/clsx";
 import { Button } from "@base-ui/react";
 import { useWidgetsUIContext } from "./context/widgets-ui-context/WidgetsUIContext";
@@ -51,7 +51,7 @@ const WidgetSelector = ({
 		if (!tempChosenWidget) return;
 
 		const { widget, index, direction } = tempChosenWidget;
-		if (widget === undefined) return;
+		if (!widget || !index || !direction) return;
 
 		const newWidget = { ...widget, isPreview: false };
 
