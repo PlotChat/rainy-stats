@@ -1,41 +1,52 @@
 /* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
 	/* =========================================
-     1. BASE COLORS
-  ========================================= */
-	--lighter-gray: #E8EDF2;
-	--ghost-lighter-gray: #d9dee4a7;
-
-	--darker-blue: #134153;
-	--dark-blue: #175C67;
-	--blue: #3396a5;
-	--accent-blue: #40ADBE;
-	--light-blue: #78C6D3;
-
+       1. BASE COLORS (PRIMITIVES)
+       Formula: --[color-name]-[100 to 900 scale]
+    ========================================= */
 	--white: #ffffff;
 	--black: #000000;
+
+	/* Neutrals */
+	--gray-100: #e8edf2;
+	--gray-200: #d9dee4;
+
+	/* Blues */
+	--blue-100: #78c6d3;
+	--blue-300: #40adbe;
+	--blue-500: #3396a5;
+	--blue-700: #175c67;
+	--blue-900: #134153;
 
 	/* =========================================
      2. SEMANTIC COLORS
   ========================================= */
-	--bg-body: var(--lighter-gray);
-	--bg-surface: var(--ghost-lighter-gray); /* For cards, modals, etc. */
+	/* Backgrounds */
+	--bg-base: var(--gray-100);
+	--bg-primary: var(--blue-500);
+	--bg-accent: var(--blue-300);
 
-	--text-main: var(--blue);
-	--text-muted: var(--darker-blue);
+	--bg-surface: color-mix(in srgb, var(--gray-200) 65%, transparent);
 
-	--border-light: var(--light-gray);
-	--border-focus: var(--light-blue);
+	/* Text */
+	--text-primary: var(--blue-500);
+	--text-secondary: var(--blue-900);
+	--text-inverse: var(--white);
 
-	--accent-primary: var(--light-blue);
-	--accent-hover: var(--lighter-blue);
+	/* Borders */
+	--border-subtle: var(--gray-200);
+	--border-focus: var(--blue-300);
+
+	/* Actions (Buttons, Links, Interactive elements) */
+	--action-primary-bg: var(--blue-300);
+	--action-primary-hover: var(--blue-500);
 
 	/* =========================================
      3. TYPOGRAPHY
   ========================================= */
-	--font-main: "Montserrat", sans-serif; 
+	--font-main: "Montserrat", sans-serif;
 
 	--step--2: clamp(0.5208rem, 0.465rem + 0.2792vw, 0.8rem);
 	--step--1: clamp(0.625rem, 0.55rem + 0.375vw, 1rem);
@@ -45,6 +56,7 @@
 	--step-3: clamp(1.296rem, 1.0669rem + 1.1454vw, 2.4414rem);
 	--step-4: clamp(1.5552rem, 1.2559rem + 1.4966vw, 3.0518rem);
 	--step-5: clamp(1.8662rem, 1.4765rem + 1.9485vw, 3.8147rem);
+	--step-6: clamp(2.2395rem, 1.7337rem + 2.5289vw, 4.7684rem);
 
 	/* =========================================
      4. SPACING
@@ -75,9 +87,9 @@
 	/* =========================================
      5. BORDERS & SHADOWS
   ========================================= */
-	--radius-sm: .25rem;
-	--radius-md: .5rem;
-	--radius-lg: .75rem;
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 0.75rem;
 	--radius-xlg: 1rem;
 	--radius-full: 624.9375rem; /* Pill shape */
 
