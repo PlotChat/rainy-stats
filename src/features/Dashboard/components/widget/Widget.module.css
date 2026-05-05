@@ -1,4 +1,7 @@
 .widget {
+	--edge-font-size: clamp(1.1rem, 5cqi, 2.6rem);
+	--edge-width: clamp(1.25rem, 0.9rem + 1.75cqw, 3rem);
+
 	container: inline-size;
 	container-name: widget;
 
@@ -9,12 +12,11 @@
 	height: 100%;
 
 	box-sizing: border-box;
-	background-color: var(--gray-500);
+	background-color: var(--bg-surface);
 	/* overflow: hidden; */
 }
 
-.widget > :not(.edge) {
-	flex: 1;
+.widget > :not(.edge, .btnsWrapper) {
 	width: 100%;
 	height: 100%;
 	min-height: 0;
@@ -22,17 +24,17 @@
 }
 
 .edge {
+	container: inline-size;
 	position: absolute;
 	display: grid;
 	place-items: center;
 
 	top: 0;
 	bottom: 0;
-	width: clamp(0.875rem, 0.2102rem + 2.9545cqi, 2.5rem);
+	width: var(--edge-width);
 
 	filter: opacity(58%);
 	overflow: hidden;
-	background-color: var(--blue);
 	cursor: pointer;
 	
 	&.edgeLeft {
@@ -46,7 +48,26 @@
 	}
 
 	>span{
-		font-size: clamp(0.864rem, -0.2483rem + 127.1192cqi, 2.9297rem);
-		color: white;
+		font-size: var(--edge-font-size);
 	}
+}
+
+.btnsWrapper{
+	
+	container-type: inline-size;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	
+	gap: 0.2rem;
+	/* inset: 0 var(--edge-width) 0 var(--edge-width); */
+
+	left:-9999px;
+}
+
+.editBtn, .removeBtn{
+	
+	aspect-ratio: 1/1;
 }
