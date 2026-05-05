@@ -1,6 +1,14 @@
 /* Base Styling */
 .cardImage {
+	container: cardImage / inline-size;
+
+	padding: var(--space-2xs);
 	display: flex;
+	gap: var(--space-2xs);
+
+	@media screen and (width > 31.25rem) {
+		gap: var(--space-xs);
+	}
 }
 
 .title,
@@ -8,21 +16,20 @@
 	overflow: hidden;
 }
 
-.title{
-	font-size: clamp(0.4375rem, 0.4103rem + 2.906cqi, 1.5rem);
+.title {
+	font-size: clamp(0.5184rem, 0.3247rem + 15.4955cqi, 7.104rem);
 	color: var(--blue);
 }
 
 .content {
-	font-size: clamp(0.3646rem, 0.3432rem + 2.2849cqi, 1.2rem);
+	font-size: clamp(0.3rem, 0.2261rem + 5.9118cqi, 2.8125rem);
 	color: var(--blue);
-	font-weight: 400;
+	font-weight: 550;
 	margin: 0;
 }
 
 .contentWrapper {
-	container-type: inline-size;
-	padding: var(--internal-padding);
+	container: contentWrapper / inline-size;
 }
 
 img {
@@ -36,7 +43,7 @@ img {
 }
 
 /* Variant styling */
-.frostedGlass{
+.frostedGlass {
 	background-color: var(--bg-surface);
 }
 
@@ -48,15 +55,11 @@ img {
 	> .imageWrapper {
 		flex: 2;
 		width: 100%;
-		padding: var(--space-2xs);
-		padding-bottom: 0;
 		min-height: 0;
 	}
 
 	.contentWrapper {
 		flex: 1;
-		padding: var(--space-2xs);
-		padding-left: var(--space-xs);
 		min-height: 0;
 		overflow: hidden;
 	}
@@ -68,14 +71,11 @@ img {
 	> .imageWrapper {
 		flex: 2;
 		height: 100%;
-		padding: var(--space-2xs);
 		min-width: 0;
 	}
 
 	.contentWrapper {
 		flex: 1;
-		padding: var(--space-2xs);
-		padding-left: 0;
 
 		min-width: 0;
 		overflow: hidden;
