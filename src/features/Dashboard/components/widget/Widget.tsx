@@ -4,11 +4,11 @@ import styles from "./Widget.module.css";
 import type {
 	WidgetsDirectionType,
 	WidgetType,
-} from "../../../../types/WidgetType";
+} from "../../../../types/widget-type";
 import Card from "../../../../components/card/Card";
-import CardImage from "../../../../components/card/CardImage/CardImage";
+import CardImage from "../../../../components/card/card-image/CardImage";
 import { motion } from "framer-motion";
-import { useWidgetsUIContext } from "../../../WidgetSelector/context/WidgetsUIContext.tsx/WidgetsUIContext";
+import { useWidgetsUIContext } from "../../../widget-selector/context/widgets-ui-context/WidgetsUIContext";
 import { BiSolidCheckboxMinus } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import Button from "../../../../components/button/Button";
