@@ -1,40 +1,38 @@
 import React from "react";
-import { clsx } from "../../utils/clsx";
+import { clsx } from "../../../../utils/clsx";
 import styles from "./Widget.module.css";
-import type { WidgetType } from "../../types/widget/WidgetType";
-import Card from "../card/Card";
-import CardImage from "../card/CardImage/CardImage";
+import type {
+	WidgetsDirectionType,
+	WidgetType,
+} from "../../../../types/WidgetType";
+import Card from "../../../../components/card/Card";
+import CardImage from "../../../../components/card/CardImage/CardImage";
 import { motion } from "framer-motion";
+import { useWidgetsUIContext } from "../../../WidgetSelector/context/WidgetsUIContext.tsx/WidgetsUIContext";
+import { BiSolidCheckboxMinus } from "react-icons/bi";
+import { FiEdit } from "react-icons/fi";
+import Button from "../../../../components/button/Button";
 
 type WidgetVariantType = "default";
 
 interface WidgetProps extends Omit<React.ComponentProps<"div">, "className"> {
 	widget?: WidgetType;
-	mode?: "default" | "edit";
 	className?: string;
 	variant?: WidgetVariantType;
 	widgetIndex: number;
-	onClickEdges?: (
-		e: React.MouseEvent,
-		widgetIndex: number,
-		direction: "left" | "right",
-	) => void;
-	onHoverEdges?: (
-		e: React.MouseEvent,
-		widgetIndex: number,
-		direction: "left" | "right",
-	) => void;
+	onClickEdges?: (widgetIndex: number, direction: WidgetsDirectionType) => void;
 }
 
 const Widget = ({
-	onHoverEdges,
 	onClickEdges,
 	widget,
-	widgetIndex,
+	widgetIndex = 0,
 	className = "",
 	variant = "default",
 }: WidgetProps) => {
 	let component;
+
+	const { widgetsMode } = useWidgetsUIContext();
 
 	if (!widget) return <Card></Card>;
 
@@ -46,6 +44,8 @@ const Widget = ({
 			component = <CardImage {...widget.attribute}></CardImage>;
 	}
 
+	const isEditable = !widget.isPreview && widgetsMode === "edit";
+
 	return (
 		<motion.div
 			layout
@@ -53,30 +53,40 @@ const Widget = ({
 			exit={{ opacity: 0, scale: 0.8 }}
 			animate={{ opacity: 1, scale: 1 }}
 			transition={{ type: "spring", stiffness: 300, damping: 25 }}
-
 			style={{
 				gridColumn: `span ${widget.colSpan}`,
 				gridRow: `span ${widget.rowSpan}`,
 			}}
 			className={clsx(className, styles[variant], styles.widget)}
 		>
-			{!widget.isPreview && (
-				<div
-					onMouseOver={(e) => onHoverEdges?.(e, widgetIndex, "left")}
-					onClick={(e) => onClickEdges?.(e, widgetIndex, "left")}
+			{isEditable && (
+				<Button
+					onClick={() => onClickEdges?.(widgetIndex, "left")}
 					className={clsx(styles.edge, styles.edgeLeft)}
-				></div>
+				>
+					<span>+</span>
+				</Button>
 			)}
 
 			{component}
 
-			{!widget.isPreview && (
-				<div
-					onMouseOver={(e) => onHoverEdges?.(e, widgetIndex, "right")}
-					onClick={(e) => onClickEdges?.(e, widgetIndex, "right")}
+			{isEditable && (
+				<Button
+					onClick={() => onClickEdges?.(widgetIndex, "right")}
 					className={clsx(styles.edge, styles.edgeRight)}
-				></div>
+				>
+					<span>+</span>
+				</Button>
 			)}
+
+			<div className={styles.btnsWrapper}>
+				<Button className={styles.editBtn}>
+					<BiSolidCheckboxMinus />
+				</Button>
+				<Button className={styles.removeBtn}>
+					<FiEdit />
+				</Button>
+			</div>
 		</motion.div>
 	);
 };

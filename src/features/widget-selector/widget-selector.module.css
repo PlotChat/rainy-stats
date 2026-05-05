@@ -1,0 +1,9 @@
+.btnsWrapper{
+    display: flex;
+    gap: 0.4rem;
+    font-size: var(--step-1);
+}
+
+.editNotification{
+    font-size: var(--step-1);
+}
