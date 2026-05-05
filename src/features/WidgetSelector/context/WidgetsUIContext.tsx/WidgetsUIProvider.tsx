@@ -13,9 +13,11 @@ export const WidgetsUIProvider = ({
 	const [widgetsMode, setWidgetsMode] =
 		useState<WidgetsSelectorModeType>("view");
 	const [tempChosenWidget, setTempChosenWidget] =
-		useState<TempChosenWidgetType>({});
+		useState<TempChosenWidgetType>();
 	const [widgetFormError, setWidgetFormError] = useState("");
 	const [widgetInsertError, setWidgetInsertError] = useState("");
+	const [widgetEditError, setWidgetEditError] = useState("");
+	const [widgetDeleteError, setWidgetDeleteError] = useState("");
 
 	return (
 		<WidgetUIContext.Provider
@@ -28,6 +30,12 @@ export const WidgetsUIProvider = ({
 
 				widgetFormError,
 				setWidgetFormError,
+
+				widgetEditError,
+				setWidgetEditError,
+
+				widgetDeleteError,
+				setWidgetDeleteError,
 
 				widgetInsertError,
 				setWidgetInsertError,
