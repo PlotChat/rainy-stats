@@ -1,12 +1,13 @@
-import type { WidgetsDirectionType } from "../../../types/widget-type";
+import type {
+	WidgetsDirectionType,
+	WidgetType,
+} from "../../../types/widget-type";
 import { useWidgetsDataContext } from "../../../context/widgets-data-context/WidgetsDataContext";
 import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
-import useWidgetForm from "./useWidgetForm";
-import useWidgetInsert from "./useWidgetInsert";
+import useWidgetInsert from "../widget-selector/hooks/useWidgetInsert";
 
 const useAddWidget = () => {
 	const { widgets, setWidgets } = useWidgetsDataContext();
-	const { handleWidgetForm } = useWidgetForm();
 	const { insertWidget } = useWidgetInsert();
 
 	const {
@@ -15,23 +16,6 @@ const useAddWidget = () => {
 		setWidgetFormError,
 		setWidgetInsertError,
 	} = useWidgetsUIContext();
-
-	const submitWidgetForm = (formData: FormData) => {
-		const parsedWidget = handleWidgetForm(formData);
-
-		if (parsedWidget) {
-			if (widgets.length !== 0) {
-				setWidgets((cur) => cur.filter((w) => !w?.isPreview));
-				setTempChosenWidget({
-					widget: parsedWidget,
-					direction: null,
-					index: null,
-				});
-			} else {
-				setWidgets([parsedWidget]);
-			}
-		}
-	};
 
 	const handleAddOnClick = (
 		widgetIndex: number,
@@ -50,6 +34,23 @@ const useAddWidget = () => {
 		insertWidget(tempChosenWidget.widget, widgetIndex, direction);
 	};
 
+	const addTempChosenWidget = (chosenWidget: WidgetType) => {
+		if (chosenWidget) {
+			if (widgets.length !== 0) {
+				setWidgets((cur) => cur.filter((w) => !w?.isPreview));
+				setTempChosenWidget({
+					widget: chosenWidget,
+					direction: null,
+					index: null,
+				});
+			} else {
+				setWidgets([chosenWidget]);
+			}
+		} else {
+			setWidgetInsertError("No chosen widget to insert. Try again.");
+		}
+	};
+
 	const resetAddProcess = () => {
 		setWidgetFormError("");
 		setWidgetInsertError("");
@@ -60,7 +61,7 @@ const useAddWidget = () => {
 
 	return {
 		insertWidget,
-		submitWidgetForm,
+		addTempChosenWidget,
 		handleAddOnClick,
 		resetAddProcess,
 	};

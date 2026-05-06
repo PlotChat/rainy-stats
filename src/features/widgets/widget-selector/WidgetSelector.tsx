@@ -1,9 +1,9 @@
 import styles from "./widget-selector.module.css";
-import { clsx } from "../../utils/clsx";
-import Button from "../../components/button/Button";
-import { useWidgetsUIContext } from "../../context/widgets-ui-context/WidgetsUIContext";
+import { clsx } from "../../../utils/clsx";
+import Button from "../../../components/button/Button";
+import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
 import AddDialog from "../widget-dialog/add-widget-dialog/AddWidgetDialog";
-import useAddWidget from "./hooks/useAddWidget";
+import useAddWidget from "../hooks/useAddWidget";
 
 interface WidgetSelectorProps extends Omit<
 	React.ComponentProps<"div">,
@@ -26,7 +26,7 @@ const WidgetSelector = ({
 		widgetFormError,
 	} = useWidgetsUIContext();
 
-	const { submitWidgetForm, insertWidget, resetAddProcess } = useAddWidget();
+	const { insertWidget, resetAddProcess } = useAddWidget();
 
 	let editNotification;
 
@@ -101,8 +101,6 @@ const WidgetSelector = ({
 				<AddDialog
 					triggerText="Card"
 					dialogTitle="Add Card"
-					formAction={submitWidgetForm}
-					formError={widgetFormError}
 					widgetType="CardImage"
 				></AddDialog>
 			)}
