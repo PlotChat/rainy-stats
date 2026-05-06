@@ -1,4 +1,4 @@
-import { useWidgetsUIContext } from "../context/widgets-ui-context/WidgetsUIContext";
+import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
 
 const useWidgetForm = () => {
 	const { setWidgetFormError } = useWidgetsUIContext();
