@@ -1,18 +1,18 @@
 import { useState } from "react";
-import Dialog from "../../../components/dialog/Dialog";
-import type { DialogProps } from "../../../components/dialog/Dialog";
-import FormCardImage from "../../../components/form/form-card-image/FormCardImage";
-import type { WidgetType } from "../../../types/widget-type";
-import styles from "./AddDialog.module.css";
+import Dialog from "../../../../components/dialog/Dialog";
+import type { DialogProps } from "../../../../components/dialog/Dialog";
+import FormCardImage from "../../../../components/form/form-card-image/FormCardImage";
+import type { WidgetType } from "../../../../types/widget-type";
+import styles from "./edit-widget-dialog.module.css";
 
-interface AddDialogProps extends DialogProps {
+interface EditWidgetDialogProps extends DialogProps {
 	formError?: string;
 	widgetType: NonNullable<WidgetType>["type"];
 	formAction?: (formData: FormData) => void;
 	onSuccess?: () => void;
 }
 
-const AddDialog = ({
+const EditWidgetDialog = ({
 	widgetType,
 	triggerText,
 	dialogTitle,
@@ -20,9 +20,8 @@ const AddDialog = ({
 	formAction,
 	onSuccess,
 	...rest
-}: AddDialogProps) => {
-	const [isOpen, setIsOpen] = useState(false);
-
+}: EditWidgetDialogProps) => {
+	const [isOpen, setIsOpen] = useState(false); 
 	let form: React.ReactNode;
 
 	const handleFormAction = (formData: FormData) => {
@@ -53,4 +52,4 @@ const AddDialog = ({
 	);
 };
 
-export default AddDialog;
+export default EditWidgetDialog;

@@ -3,7 +3,7 @@ import { WidgetUIContext } from "./WidgetsUIContext";
 import type {
 	TempChosenWidgetType,
 	WidgetsSelectorModeType,
-} from "../../../../types/widget-type";
+} from "../../types/widget-type";
 
 export const WidgetsUIProvider = ({
 	children,

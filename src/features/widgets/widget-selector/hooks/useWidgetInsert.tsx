@@ -1,9 +1,9 @@
-import { useWidgetsDataContext } from "../context/widgets-data-context/WidgetsDataContext";
+import { useWidgetsDataContext } from "../../../../context/widgets-data-context/WidgetsDataContext";
 import type {
 	WidgetsDirectionType,
 	WidgetType,
-} from "../../../types/widget-type";
-import { useWidgetsUIContext } from "../context/widgets-ui-context/WidgetsUIContext";
+} from "../../../../types/widget-type";
+import { useWidgetsUIContext } from "../../../../context/widgets-ui-context/WidgetsUIContext";
 
 const useWidgetInsert = () => {
 	const { setWidgets } = useWidgetsDataContext();

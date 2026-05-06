@@ -1,18 +1,16 @@
 import React from "react";
-import { clsx } from "../../../../utils/clsx";
+import { clsx } from "../../../utils/clsx";
 import styles from "./Widget.module.css";
-import type {
-	WidgetType,
-} from "../../../../types/widget-type";
-import Card from "../../../../components/card/Card";
-import CardImage from "../../../../components/card/card-image/CardImage";
+import type { WidgetType } from "../../../types/widget-type";
+import Card from "../../../components/card/Card";
+import CardImage from "../../../components/card/card-image/CardImage";
 import { motion } from "framer-motion";
-import { useWidgetsUIContext } from "../../../widget-selector/context/widgets-ui-context/WidgetsUIContext";
+import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
 import { FiMinusSquare } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
-import Button from "../../../../components/button/Button";
-import useAddWidget from "../../../widget-selector/hooks/useAddWidget";
-import useRemoveWidget from "../../../widget-selector/hooks/useRemoveWidget";
+import Button from "../../../components/button/Button";
+import useAddWidget from "../hooks/useAddWidget";
+import useRemoveWidget from "../widget-selector/hooks/useRemoveWidget";
 
 type WidgetVariantType = "default";
 
@@ -87,7 +85,11 @@ const Widget = ({
 					<Button className={styles.editBtn} intent="primary">
 						<FiEdit preserveAspectRatio="none" />
 					</Button>
-					<Button onClick={() => handleRemoveOnClick(widget)} className={styles.removeBtn} intent="primary">
+					<Button
+						onClick={() => handleRemoveOnClick(widget)}
+						className={styles.removeBtn}
+						intent="primary"
+					>
 						<FiMinusSquare preserveAspectRatio="none" />
 					</Button>
 				</div>

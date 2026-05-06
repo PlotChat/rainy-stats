@@ -1,9 +1,13 @@
-import { useWidgetsUIContext } from "../context/widgets-ui-context/WidgetsUIContext";
+import { useState } from "react";
+import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
+import useAddWidget from "./useAddWidget";
 
-const useWidgetForm = () => {
+const useAddWidgetForm = () => {
 	const { setWidgetFormError } = useWidgetsUIContext();
+	const { addTempChosenWidget } = useAddWidget();
+	const [isFormOpen, setIsFormOpen] = useState(false);
 
-	const handleWidgetForm = (formData: FormData) => {
+	const handleAddWidgetForm = (formData: FormData) => {
 		const data = Object.fromEntries(formData);
 		const { type } = data;
 
@@ -27,20 +31,23 @@ const useWidgetForm = () => {
 			}
 
 			setWidgetFormError("");
-			return {
+			const tempWidget = {
 				type: "CardImage" as const,
 				colSpan,
 				rowSpan,
 				attribute: { title, content, src, alt },
 				isPreview: true,
 			};
+
+			addTempChosenWidget(tempWidget);
+			setIsFormOpen(false);
 		} else {
 			setWidgetFormError("This widget type does not exist.");
 			return;
 		}
 	};
 
-	return { handleWidgetForm };
+	return { isFormOpen, setIsFormOpen, handleAddWidgetForm };
 };
 
-export default useWidgetForm;
+export default useAddWidgetForm;
