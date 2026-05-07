@@ -9,15 +9,17 @@ const useWidgetInsert = () => {
 	const { setWidgets } = useWidgetsDataContext();
 	const { setWidgetInsertError } = useWidgetsUIContext();
 
+	// Inserts the widget into the widget list with a provided index and direction
 	const insertWidget = (
 		widget: WidgetType,
 		uiIndex?: number,
 		direction?: WidgetsDirectionType,
 	) => {
 		if (uiIndex === undefined || direction === undefined) {
-			setWidgetInsertError("No chosen place to insert widget. Choose a place.");
+			setWidgetInsertError("No place to insert widget. Choose a place.");
 			return false;
 		}
+
 		setWidgets((cur) => {
 			const cleanWidgets = cur.filter((w) => !w?.isPreview);
 
