@@ -1,13 +1,16 @@
-import type { FormProps } from "../Form";
-import Button from "../../button/Button";
-import { clsx } from "../../../utils/clsx";
-import styles from './form-card-image.module.css';
-import Form from "../Form";
+import type { FormProps } from "../../../../components/form/Form";
+import Button from "../../../../components/button/Button";
+import { clsx } from "../../../../utils/clsx";
+import styles from "./form-card-image.module.css";
+import Form from "../../../../components/form/Form";
 
-const FormCardImage = ({className = "", onSubmit, action }: FormProps) => {
-
+const FormCardImage = ({ className = "", onSubmit, action }: FormProps) => {
 	return (
-		<Form onSubmit={onSubmit} className={clsx(className, styles.formCardImage)} action={action}>
+		<Form
+			onSubmit={onSubmit}
+			className={clsx(className, styles.formCardImage)}
+			action={action}
+		>
 			<input type="hidden" name="type" value="CardImage"></input>
 
 			<label htmlFor="title">
