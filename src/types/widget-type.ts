@@ -15,7 +15,7 @@ export type TempChosenWidgetType =
 export type BaseWidgetType = {
 	colSpan: number;
 	rowSpan: number;
-	isPreview: boolean;
+	isPreview: boolean | null;
 };
 
 export type WidgetType =
