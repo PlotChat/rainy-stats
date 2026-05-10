@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
-import useAddWidget from "./useAddWidget";
+import { useWidgetsUIContext } from "../../../../context/widgets-ui-context/WidgetsUIContext";
+import useAddWidget from "../useAddWidget";
 
 const useAddWidgetForm = () => {
 	const { setWidgetFormError } = useWidgetsUIContext();

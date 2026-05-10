@@ -1,8 +1,8 @@
-import type { FormProps } from "../../../../components/form/Form";
-import Button from "../../../../components/button/Button";
-import { clsx } from "../../../../utils/clsx";
+import type { FormProps } from "../../../../../components/form/Form";
+import Button from "../../../../../components/button/Button";
+import { clsx } from "../../../../../utils/clsx";
 import styles from "./form-card-image.module.css";
-import Form from "../../../../components/form/Form";
+import Form from "../../../../../components/form/Form";
 
 const FormCardImage = ({ className = "", onSubmit, action }: FormProps) => {
 	return (

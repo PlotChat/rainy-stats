@@ -1,9 +1,9 @@
 import styles from "./widget-selector.module.css";
-import { clsx } from "../../../utils/clsx";
-import Button from "../../../components/button/Button";
-import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
+import { clsx } from "../../../../utils/clsx";
+import Button from "../../../../components/button/Button";
+import { useWidgetsUIContext } from "../../../../context/widgets-ui-context/WidgetsUIContext";
 import AddDialog from "../widget-dialog/add-widget-dialog/AddWidgetDialog";
-import useAddWidget from "../hooks/useAddWidget";
+import useAddWidget from "../../hooks/useAddWidget";
 
 interface WidgetSelectorProps extends Omit<
 	React.ComponentProps<"div">,
