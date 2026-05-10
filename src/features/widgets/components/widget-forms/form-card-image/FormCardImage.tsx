@@ -2,13 +2,14 @@ import type { FormProps } from "../../../../../components/form/Form";
 import Button from "../../../../../components/button/Button";
 import { clsx } from "../../../../../utils/clsx";
 import styles from "./form-card-image.module.css";
+import baseStyles from '../widget-forms.module.css';
 import Form from "../../../../../components/form/Form";
 
 const FormCardImage = ({ className = "", onSubmit, action }: FormProps) => {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className={clsx(className, styles.formCardImage)}
+			className={clsx(className, styles.formCardImage, baseStyles.form)}
 			action={action}
 		>
 			<input type="hidden" name="type" value="CardImage"></input>
