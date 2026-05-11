@@ -4,7 +4,7 @@ import type {
 } from "../../../types/widget-type";
 import { useWidgetsDataContext } from "../../../context/widgets-data-context/WidgetsDataContext";
 import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
-import useWidgetInsert from "../widget-selector/hooks/useWidgetInsert";
+import useWidgetInsert from "./useWidgetInsert";
 
 const useAddWidget = () => {
 	const { widgets, setWidgets } = useWidgetsDataContext();

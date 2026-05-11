@@ -1,16 +1,17 @@
-import React from "react";
-import { clsx } from "../../../utils/clsx";
+import React, { useState } from "react";
+import { clsx } from "../../../../utils/clsx";
 import styles from "./Widget.module.css";
-import type { WidgetType } from "../../../types/widget-type";
-import Card from "../../../components/card/Card";
-import CardImage from "../../../components/card/card-image/CardImage";
+import type { WidgetType } from "../../../../types/widget-type";
+import Card from "../../../../components/card/Card";
+import CardImage from "../../../../components/card/card-image/CardImage";
 import { motion } from "framer-motion";
-import { useWidgetsUIContext } from "../../../context/widgets-ui-context/WidgetsUIContext";
+import { useWidgetsUIContext } from "../../../../context/widgets-ui-context/WidgetsUIContext";
 import { FiMinusSquare } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
-import Button from "../../../components/button/Button";
-import useAddWidget from "../hooks/useAddWidget";
-import useRemoveWidget from "../widget-selector/hooks/useRemoveWidget";
+import Button from "../../../../components/button/Button";
+import useAddWidget from "../../hooks/useAddWidget";
+import useRemoveWidget from "../../hooks/useRemoveWidget";
+import EditWidgetDialog from "../widget-dialog/edit-widget-dialog/EditWidgetDialog";
 
 type WidgetVariantType = "default";
 
@@ -29,6 +30,7 @@ const Widget = ({
 }: WidgetProps) => {
 	let component;
 
+	const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 	const { widgetsMode } = useWidgetsUIContext();
 	const { handleAddOnClick } = useAddWidget();
 	const { handleRemoveOnClick } = useRemoveWidget();
@@ -82,7 +84,11 @@ const Widget = ({
 
 			{isEditable && (
 				<div className={styles.btnsWrapper}>
-					<Button className={styles.editBtn} intent="primary">
+					<Button
+						className={styles.editBtn}
+						intent="primary"
+						onClick={() => setIsEditDialogOpen(true)}
+					>
 						<FiEdit preserveAspectRatio="none" />
 					</Button>
 					<Button
@@ -93,6 +99,18 @@ const Widget = ({
 						<FiMinusSquare preserveAspectRatio="none" />
 					</Button>
 				</div>
+			)}
+
+			{/* Render the Dialog externally, controlled by the state */}
+			{isEditable && (
+				<EditWidgetDialog
+					className={styles.editForm}
+					isFormOpen={isEditDialogOpen}
+					setIsFormOpen={setIsEditDialogOpen}
+					selectedWidget={widget}
+					triggerText=""
+					dialogTitle={`Edit ${widget.type}`}
+				/>
 			)}
 		</motion.div>
 	);

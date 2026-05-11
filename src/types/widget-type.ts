@@ -15,19 +15,17 @@ export type TempChosenWidgetType =
 export type BaseWidgetType = {
 	colSpan: number;
 	rowSpan: number;
-	isPreview: boolean;
+	isPreview: boolean | null;
 };
 
-export type WidgetType =
-	| (BaseWidgetType &
-			(
-				| {
-						type: "Card";
-						attribute: CardProps;
-				  }
-				| {
-						type: "CardImage";
-						attribute: CardImageProps;
-				  }
-			))
-	| null;
+export type CardWidgetType = BaseWidgetType & {
+    type: "Card";
+    attribute: CardProps;
+};
+
+export type CardImageWidgetType = BaseWidgetType & {
+    type: "CardImage";
+    attribute: CardImageProps;
+};
+
+export type WidgetType = CardWidgetType | CardImageWidgetType | null;
