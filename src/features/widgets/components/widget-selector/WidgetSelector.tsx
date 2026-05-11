@@ -23,10 +23,11 @@ const WidgetSelector = ({
 		setWidgetsMode,
 		tempChosenWidget,
 		widgetInsertError,
+		setWidgetInsertError,
 		widgetFormError,
 	} = useWidgetsUIContext();
 
-	const { insertWidget, resetAddProcess } = useAddWidget();
+	const { insertWidget, resetAddProcess, resetErrors } = useAddWidget();
 
 	let editNotification;
 
@@ -48,10 +49,17 @@ const WidgetSelector = ({
 	}
 
 	const handleApplyChanges = () => {
-		if (!tempChosenWidget) return;
+		if (!tempChosenWidget) {
+			setWidgetInsertError("Cannot apply widgets list changes. Error with the chosen widget.");
+			return;
+		}
 
 		const { widget, index, direction } = tempChosenWidget;
-		if (!widget || !index || !direction) return;
+
+		if (!widget || index == null || !direction){
+			setWidgetInsertError("Cannot apply widgets list changes. The chosen widget is invalid.");
+			return;
+		};
 
 		const newWidget = { ...widget, isPreview: false };
 
@@ -65,6 +73,7 @@ const WidgetSelector = ({
 			const success = handleApplyChanges();
 			if (success) {
 				setWidgetsMode("view");
+				resetErrors();
 			}
 			resetAddProcess();
 		} else if (widgetsMode === "view") {

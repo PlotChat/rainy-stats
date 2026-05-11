@@ -31,6 +31,7 @@ const useAddWidget = () => {
 			return { ...prev, index: widgetIndex, direction: direction };
 		});
 
+		
 		insertWidget(tempChosenWidget.widget, widgetIndex, direction);
 	};
 
@@ -52,11 +53,14 @@ const useAddWidget = () => {
 	};
 
 	const resetAddProcess = () => {
-		setWidgetFormError("");
-		setWidgetInsertError("");
 		setTempChosenWidget(null);
 
 		setWidgets((cur) => cur.filter((w) => !w?.isPreview));
+	};
+
+	const resetErrors = () => {
+		setWidgetFormError("");
+		setWidgetInsertError("");
 	};
 
 	return {
@@ -64,6 +68,7 @@ const useAddWidget = () => {
 		addTempChosenWidget,
 		handleAddOnClick,
 		resetAddProcess,
+		resetErrors,
 	};
 };
 

@@ -2,11 +2,14 @@ import React from "react";
 import styles from "./card.module.css";
 import { clsx } from "../../utils/clsx";
 
-type CardSize = "card--md" | "card--sm" | "card--lg";
+// type CardSize = "card--md" | "card--sm" | "card--lg";
 
 export interface CardProps extends React.ComponentProps<"div"> {
-	size?: CardSize;
+	// size?: CardImageSize;
+	title?: string;
+	body?: string;
 }
+
 
 const Card = ({
 	className = "",

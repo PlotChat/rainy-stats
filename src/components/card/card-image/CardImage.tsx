@@ -10,8 +10,6 @@ export interface CardImageProps extends CardProps {
 	// size?: CardImageSize;
 	alt: string;
 	src: string;
-	title?: string;
-	body?: string;
 }
 
 const CardImage = ({
