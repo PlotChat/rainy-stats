@@ -14,7 +14,7 @@ export const WIDGET_REGISTRY: Record<
 	WidgetConfig
 > = {
 	CardImage: {
-		triggerText: "Card",
+		triggerText: "Card Image",
 		dialogTitle: "Add Card",
 		formComponent: FormCardImage,
 	},

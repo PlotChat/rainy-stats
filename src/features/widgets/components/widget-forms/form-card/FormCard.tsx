@@ -11,29 +11,31 @@ const FormCard = ({
 	action,
 	selectedWidget,
 }: WidgetFormType) => {
+	const isCard = selectedWidget?.type === "Card";
+	if(selectedWidget && !isCard) throw Error("Selected widget is not of the correct type for FormCard");
+
+	const title = selectedWidget?.attribute.title || "";
+	const body = selectedWidget?.attribute.body || "";
+	
 	const colSpan = selectedWidget?.colSpan || "";
 	const rowSpan = selectedWidget?.rowSpan || "";
-
-	const isCardImage = selectedWidget?.type === "Card";
-	const title = isCardImage ? selectedWidget.attribute.title : "";
-	const body = isCardImage ? selectedWidget.attribute.body : "";
 
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className={clsx(className, styles.formCardImage, baseStyles.form)}
+			className={clsx(className, styles.formCard, baseStyles.form)}
 			action={action}
 		>
-			<input type="hidden" name="type" defaultValue="CardImage"></input>
+			<input type="hidden" name="type" defaultValue="Card"></input>
 
 			<label htmlFor="title">
 				<p>Title</p>
-				<input defaultValue={title} type="text" name="title" required></input>
+				<input defaultValue={title} type="text" name="title"></input>
 			</label>
 
 			<label htmlFor="content">
-				<p>Content</p>
-				<input defaultValue={body} type="text" name="content" required></input>
+				<p>Body</p>
+				<input defaultValue={body} type="text" name="body"></input>
 			</label>
 
 			<label htmlFor="rowSpan">

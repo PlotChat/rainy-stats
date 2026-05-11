@@ -10,19 +10,18 @@ export interface CardProps extends React.ComponentProps<"div"> {
 	body?: string;
 }
 
-
-const Card = ({
-	className = "",
-	id,
-	children,
-	...rest
-}: CardProps) => {
+const Card = ({ className = "", id, title, body, children, ...rest }: CardProps) => {
 	return (
-		<div
-			{...rest}
-			className={clsx(className, styles.card)}
-			id={id}
-		>
+		<div {...rest} className={clsx(className, styles.card)} id={id}>
+			{!children && (
+				<>
+					<div className={styles.contentWrapper}>
+						<h3 className={styles.title}>{title}</h3>
+						<p className={styles.body}>{body}</p>
+						<div className={styles.other}>{children}</div>
+					</div>
+				</>
+			)}
 			{children}
 		</div>
 	);

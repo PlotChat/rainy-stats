@@ -21,7 +21,7 @@ const AddWidgetDialog = ({
 	const { isFormOpen, setIsFormOpen, handleAddWidgetForm } = useAddWidgetForm();
 
 	const config = WIDGET_REGISTRY[widgetTypeName];
-	const FormComponent = config.formComponent;
+	const WidgetFormComponent = config.formComponent;
 
 	return (
 		<Dialog
@@ -32,7 +32,7 @@ const AddWidgetDialog = ({
 			dialogTitle={dialogTitle}
 		>
 			<div className={styles.formError}>{formError}</div>
-			<FormComponent onSubmit={handleAddWidgetForm} />
+			<WidgetFormComponent onSubmit={(formData: FormData) => handleAddWidgetForm(formData)} />
 		</Dialog>
 	);
 };

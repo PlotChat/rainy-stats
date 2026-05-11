@@ -4,6 +4,7 @@ import Button from "../../../../components/button/Button";
 import { useWidgetsUIContext } from "../../../../context/widgets-ui-context/WidgetsUIContext";
 import AddDialog from "../widget-dialog/add-widget-dialog/AddWidgetDialog";
 import useAddWidget from "../../hooks/useAddWidget";
+import { WIDGET_REGISTRY } from "../../config/widget-registry";
 
 interface WidgetSelectorProps extends Omit<
 	React.ComponentProps<"div">,
@@ -50,16 +51,20 @@ const WidgetSelector = ({
 
 	const handleApplyChanges = () => {
 		if (!tempChosenWidget) {
-			setWidgetInsertError("Cannot apply widgets list changes. Error with the chosen widget.");
+			setWidgetInsertError(
+				"Cannot apply widgets list changes. Error with the chosen widget.",
+			);
 			return;
 		}
 
 		const { widget, index, direction } = tempChosenWidget;
 
-		if (!widget || index == null || !direction){
-			setWidgetInsertError("Cannot apply widgets list changes. The chosen widget is invalid.");
+		if (!widget || index == null || !direction) {
+			setWidgetInsertError(
+				"Cannot apply widgets list changes. The chosen widget is invalid.",
+			);
 			return;
-		};
+		}
 
 		const newWidget = { ...widget, isPreview: false };
 
@@ -108,16 +113,19 @@ const WidgetSelector = ({
 
 			{widgetsMode === "edit" && (
 				<>
-					<AddDialog
-						triggerText="Card Image"
-						dialogTitle="Add Card Image"
-						widgetTypeName="CardImage"
-					></AddDialog>
-					<AddDialog
-						triggerText="Card"
-						dialogTitle="Add Card"
-						widgetTypeName="Card"
-					></AddDialog>
+					{(
+						Object.keys(WIDGET_REGISTRY) as Array<keyof typeof WIDGET_REGISTRY>
+					).map((widgetKey) => {
+						const config = WIDGET_REGISTRY[widgetKey];
+						return (
+							<AddDialog
+								key={widgetKey}
+								triggerText={config.triggerText}
+								dialogTitle={config.dialogTitle}
+								widgetTypeName={widgetKey}
+							/>
+						);
+					})}
 				</>
 			)}
 

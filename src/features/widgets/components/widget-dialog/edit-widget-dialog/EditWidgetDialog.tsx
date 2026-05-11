@@ -7,8 +7,8 @@ import styles from "./edit-widget-dialog.module.css";
 import useEditWidgetForm from "../hooks/useEditWidgetForm";
 
 interface AddWidgetDialogProps extends DialogProps {
-	selectedWidget: WidgetType,
-	isFormOpen: boolean,
+	selectedWidget: WidgetType;
+	isFormOpen: boolean;
 	setIsFormOpen: (value: boolean) => void;
 	formError?: string;
 }
@@ -24,7 +24,8 @@ const EditWidgetDialog = ({
 }: AddWidgetDialogProps) => {
 	const { handleEditWidgetForm } = useEditWidgetForm();
 
-	if(!selectedWidget) throw new Error("EditWidgetDialog must have a selected widget");
+	if (!selectedWidget)
+		throw new Error("EditWidgetDialog must have a selected widget");
 
 	const config = WIDGET_REGISTRY[selectedWidget.type];
 	const WidgetFormComponent = config.formComponent;
@@ -38,7 +39,13 @@ const EditWidgetDialog = ({
 			dialogTitle={dialogTitle}
 		>
 			<div className={styles.formError}>{formError}</div>
-			<WidgetFormComponent selectedWidget={selectedWidget} onSubmit={(formData: FormData) => handleEditWidgetForm(selectedWidget, formData)} />
+			<WidgetFormComponent
+				selectedWidget={selectedWidget}
+				onSubmit={(formData: FormData) => {
+					handleEditWidgetForm(selectedWidget, formData);
+					setIsFormOpen(false);
+				}}
+			/>
 		</Dialog>
 	);
 };

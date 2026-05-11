@@ -12,7 +12,7 @@
 }
 
 .title,
-.content {
+.body {
 	overflow: hidden;
 }
 
@@ -21,7 +21,7 @@
 	color: var(--blue);
 }
 
-.content {
+.body {
 	font-size: clamp(0.3rem, 0.2261rem + 5.9118cqi, 2.8125rem);
 	color: var(--blue);
 	font-weight: 550;
