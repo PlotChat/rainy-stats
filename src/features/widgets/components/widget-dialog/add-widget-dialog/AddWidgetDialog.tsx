@@ -1,24 +1,27 @@
-import Dialog from "../../../../../components/dialog/Dialog";
-import type { DialogProps } from "../../../../../components/dialog/Dialog";
+import { WIDGET_REGISTRY } from "../../../config/widget-registry";
 import type { WidgetType } from "../../../../../types/widget-type";
+import useAddWidgetForm from "../hooks/useAddWidgetForm";
+import Dialog, {
+	type DialogProps,
+} from "../../../../../components/dialog/Dialog";
 import styles from "./add-widget-dialog.module.css";
-import useAddWidgetForm from "../../../hooks/forms-hooks/useAddWidgetForm";
-import WidgetFormRenderer from "../../widget-forms/WidgetFormRenderer";
 
-interface AddDialogProps extends DialogProps {
+interface AddWidgetDialogProps extends DialogProps {
 	formError?: string;
-	widgetType: NonNullable<WidgetType>["type"];
+	widgetTypeName: NonNullable<WidgetType>["type"];
 }
 
-const AddDialog = ({
-	widgetType,
+const AddWidgetDialog = ({
 	triggerText,
 	dialogTitle,
 	formError,
+	widgetTypeName,
 	...rest
-}: AddDialogProps) => {
-	const { isFormOpen, setIsFormOpen } = useAddWidgetForm();
-	const form = <WidgetFormRenderer type={widgetType}></WidgetFormRenderer>;
+}: AddWidgetDialogProps) => {
+	const { isFormOpen, setIsFormOpen, handleAddWidgetForm } = useAddWidgetForm();
+
+	const config = WIDGET_REGISTRY[widgetTypeName];
+	const FormComponent = config.formComponent;
 
 	return (
 		<Dialog
@@ -29,9 +32,9 @@ const AddDialog = ({
 			dialogTitle={dialogTitle}
 		>
 			<div className={styles.formError}>{formError}</div>
-			{form}
+			<FormComponent onSubmit={handleAddWidgetForm} />
 		</Dialog>
 	);
 };
 
-export default AddDialog;
+export default AddWidgetDialog;
