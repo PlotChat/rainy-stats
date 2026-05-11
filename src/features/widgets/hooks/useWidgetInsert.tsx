@@ -21,15 +21,18 @@ const useWidgetInsert = () => {
 		}
 
 		setWidgets((cur) => {
-			const insertPosition =
-			direction === "left" ? uiIndex : uiIndex + 1;
+			const insertPosition = direction === "left" ? uiIndex : uiIndex + 1;
 
-			const before = cur.slice(0, insertPosition);
-			const after = cur.slice(insertPosition);
+            // 1. Split the array exactly where the user clicked
+            const before = cur.slice(0, insertPosition);
+            const after = cur.slice(insertPosition);
+            
+            // 2. Scrub ALL old previews out of both halves
+            const cleanBefore = before.filter((w) => !w?.isPreview);
+            const cleanAfter = after.filter((w) => !w?.isPreview);
 
-			const newCur = [...before, widget, ...after];
-
-			return newCur.filter((w) => !w?.isPreview || w === widget);
+            // 3. Sandwich the newly inserted widget safely in the middle
+            return [...cleanBefore, widget, ...cleanAfter];
 		});
 
 		return true;
