@@ -10,18 +10,21 @@ const useAddWidgetForm = () => {
 
 	const handleAddWidgetForm = (formData: FormData) => {
 		const data = Object.fromEntries(formData);
+		const { type, colSpan, rowSpan, ...attributes } = data;
 
-		if (!data.type) {
+		if (!type) {
 			setWidgetFormError("Error when choosing widget type.");
+			setIsFormOpen(false);
 			return;
 		}
 
 		// construct the new widget, overriding colSpan and rowSpan as Numbers
 		const newWidget = {
-			...data,
-			colSpan: Number(data.colSpan),
-			rowSpan: Number(data.rowSpan),
+			type,
+			colSpan: Number(colSpan),
+			rowSpan: Number(rowSpan),
 			isPreview: true,
+			attribute: attributes
 		} as WidgetType;
 
 		addTempChosenWidget(newWidget);
