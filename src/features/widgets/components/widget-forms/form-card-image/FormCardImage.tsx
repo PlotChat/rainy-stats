@@ -61,17 +61,17 @@ const FormCardImage = ({
 
 			<label htmlFor="title">
 				<p>Title</p>
-				<input defaultValue={title} type="text" name="title" required></input>
+				<input defaultValue={title} type="text" name="title"></input>
 			</label>
 
 			<label htmlFor="body">
 				<p>Body</p>
-				<input defaultValue={body} type="text" name="body" required></input>
+				<input defaultValue={body} type="text" name="body"></input>
 			</label>
 
 			<label htmlFor="src">
 				<p>Image Source</p>
-				<input defaultValue={src} type="text" name="src" required></input>
+				<input defaultValue={src} alt="CardImage image" type="text" name="src"></input>
 			</label>
 
 			<label htmlFor="rowSpan">
