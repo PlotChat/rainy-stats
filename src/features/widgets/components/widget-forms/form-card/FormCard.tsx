@@ -30,12 +30,12 @@ const FormCard = ({
 
 			<label htmlFor="title">
 				<p>Title</p>
-				<input defaultValue={title} type="text" name="title" required></input>
+				<input defaultValue={title} type="text" name="title"></input>
 			</label>
 
 			<label htmlFor="content">
-				<p>Content</p>
-				<input defaultValue={body} type="text" name="body" required></input>
+				<p>Body</p>
+				<input defaultValue={body} type="text" name="body"></input>
 			</label>
 
 			<label htmlFor="rowSpan">
