@@ -1,7 +1,7 @@
 import type { FormProps } from "../../../../../components/form/Form";
 import Button from "../../../../../components/button/Button";
 import { clsx } from "../../../../../utils/clsx";
-import styles from "./form-card-image.module.css";
+import styles from "./form-card.module.css";
 import baseStyles from "../widget-forms.module.css";
 import Form from "../../../../../components/form/Form";
 
@@ -34,7 +34,7 @@ const FormCard = ({ className = "", onSubmit, action }: FormProps) => {
 				<input type="number" name="colSpan" required></input>
 			</label>
 
-			<Button type="submit">Start Adding Card</Button>
+			<Button type="submit">Submit</Button>
 		</Form>
 	);
 };
