@@ -17,7 +17,7 @@ const Card = ({ className = "", id, title, body, children, ...rest }: CardProps)
 				<>
 					<div className={styles.contentWrapper}>
 						<h3 className={styles.title}>{title}</h3>
-						<p className={styles.content}>{body}</p>
+						<p className={styles.body}>{body}</p>
 						<div className={styles.other}>{children}</div>
 					</div>
 				</>
