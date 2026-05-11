@@ -27,7 +27,7 @@ const EditWidgetDialog = ({
 	if(!selectedWidget) throw new Error("EditWidgetDialog must have a selected widget");
 
 	const config = WIDGET_REGISTRY[selectedWidget.type];
-	const FormComponent = config.formComponent;
+	const WidgetFormComponent = config.formComponent;
 
 	return (
 		<Dialog
@@ -38,7 +38,7 @@ const EditWidgetDialog = ({
 			dialogTitle={dialogTitle}
 		>
 			<div className={styles.formError}>{formError}</div>
-			<FormComponent onSubmit={(formData: FormData) => handleEditWidgetForm(selectedWidget, formData)} />
+			<WidgetFormComponent selectedWidget={selectedWidget} onSubmit={(formData: FormData) => handleEditWidgetForm(selectedWidget, formData)} />
 		</Dialog>
 	);
 };
