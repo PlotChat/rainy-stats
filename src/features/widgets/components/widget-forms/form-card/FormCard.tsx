@@ -11,14 +11,14 @@ const FormCard = ({
 	action,
 	selectedWidget,
 }: WidgetFormType) => {
+	const isCard = selectedWidget?.type === "Card";
+	if(selectedWidget && !isCard) throw Error("Selected widget is not of the correct type for FormCard");
+
+	const title = selectedWidget?.attribute.title || "";
+	const body = selectedWidget?.attribute.body || "";
+	
 	const colSpan = selectedWidget?.colSpan || "";
 	const rowSpan = selectedWidget?.rowSpan || "";
-
-	const isCard = selectedWidget?.type === "Card";
-	const title = isCard ? selectedWidget.attribute.title : "";
-	const body = isCard ? selectedWidget.attribute.body : "";
-
-	if(selectedWidget && !isCard) throw Error("Selected widget is not of the correct type for FormCard");
 
 	return (
 		<Form
@@ -35,7 +35,7 @@ const FormCard = ({
 
 			<label htmlFor="content">
 				<p>Content</p>
-				<input defaultValue={body} type="text" name="content" required></input>
+				<input defaultValue={body} type="text" name="body" required></input>
 			</label>
 
 			<label htmlFor="rowSpan">
