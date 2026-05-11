@@ -19,6 +19,8 @@ const FormCardImage = ({
 	const body = isCardImage ? selectedWidget.attribute.body : "";
 	const src = isCardImage ? selectedWidget.attribute.src : "";
 
+	if(selectedWidget &&!isCardImage) throw Error("Selected widget is not of the correct type for FormCardImage");
+
 	return (
 		<Form
 			onSubmit={onSubmit}

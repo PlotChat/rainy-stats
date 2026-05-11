@@ -18,13 +18,15 @@ const FormCard = ({
 	const title = isCard ? selectedWidget.attribute.title : "";
 	const body = isCard ? selectedWidget.attribute.body : "";
 
+	if(selectedWidget && !isCard) throw Error("Selected widget is not of the correct type for FormCard");
+
 	return (
 		<Form
 			onSubmit={onSubmit}
 			className={clsx(className, styles.formCard, baseStyles.form)}
 			action={action}
 		>
-			<input type="hidden" name="type" defaultValue={selectedWidget?.type}></input>
+			<input type="hidden" name="type" defaultValue="Card"></input>
 
 			<label htmlFor="title">
 				<p>Title</p>
