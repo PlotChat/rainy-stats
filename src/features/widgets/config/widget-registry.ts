@@ -1,13 +1,12 @@
 import FormCardImage from "../components/widget-forms/form-card-image/FormCardImage";
 import type { WidgetType } from "../../../types/widget-type";
-import React from "react";
-import type { FormProps } from "../../../components/form/Form";
 import FormCard from "../components/widget-forms/form-card/FormCard";
+import type { WidgetFormType } from "../components/widget-forms/types/widget-form-type";
 
 export type WidgetConfig = {
 	triggerText: string;
 	dialogTitle: string;
-	formComponent: React.ComponentType<FormProps>;
+	formComponent: React.ComponentType<WidgetFormType>;
 };
 
 export const WIDGET_REGISTRY: Record<
