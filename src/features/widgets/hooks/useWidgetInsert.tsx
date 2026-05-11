@@ -26,11 +26,10 @@ const useWidgetInsert = () => {
 
 			const before = cur.slice(0, insertPosition);
 			const after = cur.slice(insertPosition);
-			
-			const newCur = [...before, widget, ...after]
-			newCur.filter((w) => !w?.isPreview);
 
-			return newCur;
+			const newCur = [...before, widget, ...after];
+
+			return newCur.filter((w) => !w?.isPreview || w === widget);
 		});
 
 		return true;
