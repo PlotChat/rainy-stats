@@ -11,15 +11,19 @@ const FormCardImage = ({
 	action,
 	selectedWidget,
 }: WidgetFormType) => {
+	const isCardImage = selectedWidget?.type === "CardImage";
+	if (selectedWidget && !isCardImage)
+		throw Error("Selected widget is not of the correct type for FormCardImage");
+
+	const variant = selectedWidget?.attribute.variant || "";
+	const title = selectedWidget?.attribute.title || "";
+	const body = selectedWidget?.attribute.body || "";
+	const src = selectedWidget?.attribute.src || "";
+
 	const colSpan = selectedWidget?.colSpan || "";
 	const rowSpan = selectedWidget?.rowSpan || "";
 
-	const isCardImage = selectedWidget?.type === "CardImage";
-	const title = isCardImage ? selectedWidget.attribute.title : "";
-	const body = isCardImage ? selectedWidget.attribute.body : "";
-	const src = isCardImage ? selectedWidget.attribute.src : "";
-
-	if(selectedWidget &&!isCardImage) throw Error("Selected widget is not of the correct type for FormCardImage");
+	const activeVariant = variant || "row";
 
 	return (
 		<Form
@@ -29,14 +33,40 @@ const FormCardImage = ({
 		>
 			<input type="hidden" name="type" defaultValue="CardImage"></input>
 
+			<label htmlFor="variant">
+				<p>Variant</p>
+				<label htmlFor="row">
+					Row
+					<input
+						defaultChecked={activeVariant === "row"}
+						value="row"
+						id="row"
+						type="radio"
+						name="variant"
+						required
+					></input>
+				</label>
+				<label htmlFor="column">
+					Column
+					<input
+						defaultChecked={activeVariant === "column"}
+						value="column"
+						id="column"
+						type="radio"
+						name="variant"
+						required
+					></input>
+				</label>
+			</label>
+
 			<label htmlFor="title">
 				<p>Title</p>
 				<input defaultValue={title} type="text" name="title" required></input>
 			</label>
 
-			<label htmlFor="content">
-				<p>Content</p>
-				<input defaultValue={body} type="text" name="content" required></input>
+			<label htmlFor="body">
+				<p>Body</p>
+				<input defaultValue={body} type="text" name="body" required></input>
 			</label>
 
 			<label htmlFor="src">
@@ -46,12 +76,22 @@ const FormCardImage = ({
 
 			<label htmlFor="rowSpan">
 				<p>Length</p>
-				<input defaultValue={rowSpan} type="number" name="rowSpan" required></input>
+				<input
+					defaultValue={rowSpan}
+					type="number"
+					name="rowSpan"
+					required
+				></input>
 			</label>
 
 			<label htmlFor="colSpan">
 				<p>Height</p>
-				<input defaultValue={colSpan} type="number" name="colSpan" required></input>
+				<input
+					defaultValue={colSpan}
+					type="number"
+					name="colSpan"
+					required
+				></input>
 			</label>
 
 			<Button type="submit">Submit</Button>
