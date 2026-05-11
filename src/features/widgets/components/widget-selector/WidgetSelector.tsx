@@ -98,11 +98,18 @@ const WidgetSelector = ({
 			</div>
 
 			{widgetsMode === "edit" && (
-				<AddDialog
-					triggerText="Card"
-					dialogTitle="Add Card"
-					widgetType="CardImage"
-				></AddDialog>
+				<>
+					<AddDialog
+						triggerText="Card Image"
+						dialogTitle="Add Card Image"
+						widgetTypeName="CardImage"
+					></AddDialog>
+					<AddDialog
+						triggerText="Card"
+						dialogTitle="Add Card"
+						widgetTypeName="Card"
+					></AddDialog>
+				</>
 			)}
 
 			<div className={styles.others}>{children}</div>
