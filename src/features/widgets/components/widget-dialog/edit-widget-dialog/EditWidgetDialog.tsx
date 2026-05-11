@@ -1,24 +1,33 @@
-import Dialog from "../../../../../components/dialog/Dialog";
-import type { DialogProps } from "../../../../../components/dialog/Dialog";
+import { WIDGET_REGISTRY } from "../../../config/widget-registry";
 import type { WidgetType } from "../../../../../types/widget-type";
-import styles from "./add-widget-dialog.module.css";
-import useAddWidgetForm from "../../../hooks/forms-hooks/useAddWidgetForm";
-import WidgetFormRenderer from "../../widget-forms/WidgetFormRenderer";
+import Dialog, {
+	type DialogProps,
+} from "../../../../../components/dialog/Dialog";
+import styles from "./edit-widget-dialog.module.css";
+import useEditWidgetForm from "../hooks/useEditWidgetForm";
 
-interface AddDialogProps extends DialogProps {
+interface AddWidgetDialogProps extends DialogProps {
+	selectedWidget: WidgetType,
+	isFormOpen: boolean,
+	setIsFormOpen: (value: boolean) => void;
 	formError?: string;
-	widgetType: NonNullable<WidgetType>["type"];
 }
 
 const EditWidgetDialog = ({
-	widgetType,
+	isFormOpen,
+	setIsFormOpen,
 	triggerText,
 	dialogTitle,
 	formError,
+	selectedWidget,
 	...rest
-}: AddDialogProps) => {
-	const { isFormOpen, setIsFormOpen } = useEditWidgetForm();
-	const form = <WidgetFormRenderer type={widgetType}></WidgetFormRenderer>;
+}: AddWidgetDialogProps) => {
+	const { handleEditWidgetForm } = useEditWidgetForm();
+
+	if(!selectedWidget) throw new Error("EditWidgetDialog must have a selected widget");
+
+	const config = WIDGET_REGISTRY[selectedWidget.type];
+	const FormComponent = config.formComponent;
 
 	return (
 		<Dialog
@@ -29,7 +38,7 @@ const EditWidgetDialog = ({
 			dialogTitle={dialogTitle}
 		>
 			<div className={styles.formError}>{formError}</div>
-			{form}
+			<FormComponent onSubmit={(formData: FormData) => handleEditWidgetForm(selectedWidget, formData)} />
 		</Dialog>
 	);
 };

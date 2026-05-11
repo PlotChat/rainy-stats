@@ -105,3 +105,7 @@
 		width: 100%;
 	}
 }
+
+.editForm{
+	display: none;
+}
