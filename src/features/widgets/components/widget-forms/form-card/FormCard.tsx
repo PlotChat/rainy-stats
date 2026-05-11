@@ -14,17 +14,17 @@ const FormCard = ({
 	const colSpan = selectedWidget?.colSpan || "";
 	const rowSpan = selectedWidget?.rowSpan || "";
 
-	const isCardImage = selectedWidget?.type === "Card";
-	const title = isCardImage ? selectedWidget.attribute.title : "";
-	const body = isCardImage ? selectedWidget.attribute.body : "";
+	const isCard = selectedWidget?.type === "Card";
+	const title = isCard ? selectedWidget.attribute.title : "";
+	const body = isCard ? selectedWidget.attribute.body : "";
 
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className={clsx(className, styles.formCardImage, baseStyles.form)}
+			className={clsx(className, styles.formCard, baseStyles.form)}
 			action={action}
 		>
-			<input type="hidden" name="type" defaultValue="CardImage"></input>
+			<input type="hidden" name="type" defaultValue={selectedWidget?.type}></input>
 
 			<label htmlFor="title">
 				<p>Title</p>
