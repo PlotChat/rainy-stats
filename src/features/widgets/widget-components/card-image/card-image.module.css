@@ -17,12 +17,12 @@
 }
 
 .title {
-	font-size: clamp(0.5184rem, 0.3247rem + 15.4955cqi, 7.104rem);
+	font-size: clamp(0.375rem, 0.25rem + 0.625vw, 1rem);
 	color: var(--blue);
 }
 
 .body {
-	font-size: clamp(0.3rem, 0.2261rem + 5.9118cqi, 2.8125rem);
+	font-size: clamp(0.3333rem, 0.2222rem + 0.5556vw, 0.8889rem);
 	color: var(--blue);
 	font-weight: 550;
 	margin: 0;
