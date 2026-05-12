@@ -13,7 +13,7 @@ const Home = () => {
 			<WidgetSelector></WidgetSelector>
 
 			<main className={styles.main}>
-				<Dashboard variant="grid" gridColumns={8}>
+				<Dashboard variant="grid" gridColumns={12}>
 					<AnimatePresence mode="popLayout">
 						{widgets.map((w, index) => (
 							<Widget key={index} widget={w} widgetIndex={index}></Widget>

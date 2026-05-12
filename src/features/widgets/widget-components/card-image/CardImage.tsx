@@ -1,6 +1,6 @@
-import Card, { type CardProps } from "../Card";
+import Card, { type CardProps } from "../../../../components/card/Card";
 import styles from "./card-image.module.css";
-import { clsx } from "../../../utils/clsx";
+import { clsx } from "../../../../utils/clsx";
 
 type CardImageVariant = "column" | "row";
 // type CardImageSize = "sm" | "md" | "lg";
@@ -35,7 +35,7 @@ const CardImage = ({
 			</div>
 			<div className={styles.contentWrapper}>
 				<h3 className={styles.title}>{title}</h3>
-				<p className={styles.content}>{body}</p>
+				<p className={styles.body}>{body}</p>
 				<div className={styles.other}>{children}</div>
 			</div>
 		</Card>

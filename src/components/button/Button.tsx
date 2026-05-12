@@ -7,7 +7,7 @@ type ButtonVariant = "filled" | "hollow";
 type ButtonIntent = "default" | "primary" | "danger" | "warning";
 // type BtnSize = "sm" | "md" | "lg";
 
-interface ButtonProps extends Omit<
+export interface ButtonProps extends Omit<
 	React.ComponentPropsWithRef<typeof Base.Button>,
 	"className"
 > {
@@ -17,7 +17,7 @@ interface ButtonProps extends Omit<
 	intent?: ButtonIntent;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLElement, ButtonProps>(
 	(
 		{
 			variant = "filled",

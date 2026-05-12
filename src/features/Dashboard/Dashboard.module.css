@@ -1,7 +1,7 @@
 .dashboard {
 	container-type: dashboard / inline-size;
 
-	max-width: clamp(19.375rem, 0.75rem + 93.125cqi, 112.5rem);
+	max-width: clamp(19.375rem, 2.625rem + 83.75cqi, 103.125rem);
 	margin: auto;
 	min-height: 100dvh;
 }
