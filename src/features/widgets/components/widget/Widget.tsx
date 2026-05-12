@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { clsx } from "../../../../utils/clsx";
 import styles from "./Widget.module.css";
 import type { WidgetType } from "../../../../types/widget-type";
@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { useWidgetsUIContext } from "../../../../context/widgets-ui-context/WidgetsUIContext";
 import { FiMinusSquare } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
-import Button from "../../../../components/button/Button";
+import Button, { type ButtonProps } from "../../../../components/button/Button";
 import useAddWidget from "../../hooks/useAddWidget";
 import useRemoveWidget from "../../hooks/useRemoveWidget";
 import EditWidgetDialog from "../widget-dialog/edit-widget-dialog/EditWidgetDialog";
@@ -61,25 +61,25 @@ const Widget = ({
 			className={clsx(className, styles[variant], styles.widget)}
 		>
 			{isEditable && (
-				<Button
+				<WidgetEdge
 					onClick={() => handleAddOnClick?.(widgetIndex, "left")}
-					className={clsx(styles.edge, styles.edgeLeft)}
 					intent="primary"
+					className={clsx(styles.edgeLeft)}
 				>
 					<span>+</span>
-				</Button>
+				</WidgetEdge>
 			)}
 
 			{component}
 
 			{isEditable && (
-				<Button
+				<WidgetEdge
 					onClick={() => handleAddOnClick?.(widgetIndex, "right")}
-					className={clsx(styles.edge, styles.edgeRight)}
 					intent="primary"
+					className={clsx(styles.edgeRight)}
 				>
 					<span>+</span>
-				</Button>
+				</WidgetEdge>
 			)}
 
 			{isEditable && (
@@ -115,5 +115,23 @@ const Widget = ({
 		</motion.div>
 	);
 };
+
+// Widget's edges' component
+const WidgetEdge = forwardRef<HTMLElement, ButtonProps>(
+	({ className = "", intent = "primary", children, ...rest }, ref) => {
+		return (
+			<Button
+				{...rest}
+				ref={ref}
+				intent={intent}
+				className={clsx(styles.edge, className)}
+			>
+				{children}
+			</Button>
+		);
+	},
+);
+
+WidgetEdge.displayName = "WidgetEdge";
 
 export default Widget;
