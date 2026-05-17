@@ -1,11 +1,7 @@
-.Dashboard {
+.dashboard {
 	container-type: dashboard / inline-size;
-	--dashboard-width: 90vw;
-	--max-dashboard-width: 1650px;
 
-	width: var(--dashboard-width);
-	max-width: var(--max-dashboard-width);
-
+	max-width: clamp(19.375rem, 2.625rem + 83.75cqi, 103.125rem);
 	margin: auto;
 	min-height: 100dvh;
 }
@@ -14,22 +10,9 @@
 	display: grid;
 	grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
 	grid-auto-rows: calc(
-		(70vw - (calc(var(--grid-columns) - 1) * var(--space-s))) /
-			var(--grid-columns)
+		(100cqw - (calc(var(--grid-columns) - 1) * var(--space-s))) / var(--grid-columns)
 	);
 
 	gap: var(--space-s);
 	grid-auto-flow: dense;
-}
-
-.emptyErrorWrapper {
-	display: grid;
-	place-items: center;
-
-	width: 100%;
-	min-height: 60vh;
-	padding-inline: var(--space-s);
-
-	text-align: center;
-	align-self: center;
 }

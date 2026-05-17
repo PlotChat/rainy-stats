@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./Dashboard.module.css";
+import styles from "./dashboard.module.css";
 import { clsx } from "../../utils/clsx";
 
 export interface DashboardStyles extends React.CSSProperties {
-	"--grid-columns"?: number;
+    "--grid-columns"?: number;
 }
 
 type DashboardVariantType = "grid";
@@ -21,7 +21,6 @@ interface DashboardBaseProps extends Omit<
 // Grid variant props
 interface DashboardGridProps extends DashboardBaseProps {
 	variant?: "grid";
-	emptyErrorMsg?: string;
 	gridColumns: number;
 }
 
@@ -31,33 +30,31 @@ const Dashboard = (props: DashboardProps) => {
 	const {
 		variant = "grid",
 		className = "",
-		emptyErrorMsg,
 		children,
 		...rest
 	} = props;
 
 	const customStyles: DashboardStyles = {};
+	const placeholderMsg = "There are no items in the dashboard. You can add some, though!";
 
 	if (props.variant === "grid") {
 		customStyles["--grid-columns"] = props.gridColumns || 8;
 	}
 
 	return (
-		<>
-			{(!children || React.Children.count(children) === 0) ? (
-				<div className={styles.emptyErrorWrapper}>
-					<h3>{emptyErrorMsg}</h3>
+		<div
+			style={customStyles}
+			className={clsx(styles.dashboard, styles[variant], className)}
+			{...rest}
+		>
+			{children}
+
+			{children === undefined && (
+				<div className="placeholder">
+					<p>{placeholderMsg}</p>
 				</div>
-			):
-				<div
-					style={customStyles}
-					className={clsx(styles.Dashboard, styles[variant], className)}
-					{...rest}
-				>
-					{children}
-				</div>			
-			}
-		</>
+			)}
+		</div>
 	);
 };
 
