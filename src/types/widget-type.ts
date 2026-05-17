@@ -1,5 +1,5 @@
 import type { CardProps } from "../components/card/Card";
-import type { CardImageProps } from "../features/widgets/widget-components/card-image/CardImage";
+import type { CardImageProps } from "../features/widgets/components/widget-components/card-image/CardImage";
 
 export type WidgetsSelectorModeType = "view" | "edit";
 export type WidgetsDirectionType = "left" | "right";
