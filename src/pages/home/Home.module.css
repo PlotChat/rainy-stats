@@ -10,3 +10,9 @@
 .Home > * + *{
     margin-top: var(--space-m);
 }
+
+.main{
+    width: 100%;
+    max-width: 1536px;
+    margin: auto;
+}

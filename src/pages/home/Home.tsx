@@ -10,9 +10,9 @@ const Home = () => {
 
 	return (
 		<div className={styles.Home}>
-			<WidgetSelector></WidgetSelector>
 
 			<main className={styles.main}>
+				<WidgetSelector></WidgetSelector>
 				<Dashboard
 					emptyErrorMsg="There are no items in the dashboard. You can add some, though!"
 					variant="grid"
