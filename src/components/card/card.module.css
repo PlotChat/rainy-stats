@@ -1,6 +1,4 @@
 .card {
-    border: 0 solid;
     border-radius: var(--radius-xlg);
-
-    background-color: var(--ghost-lighter-gray);
+    background-color: var(--bg-surface); 
 }
