@@ -1,6 +1,6 @@
-import Card, { type CardProps } from "../../../../components/card/Card";
+import Card, { type CardProps } from "../../../../../components/card/Card";
 import styles from "./card-image.module.css";
-import { clsx } from "../../../../utils/clsx";
+import { clsx } from "../../../../../utils/clsx";
 
 type CardImageVariant = "column" | "row";
 // type CardImageSize = "sm" | "md" | "lg";

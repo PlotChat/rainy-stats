@@ -12,7 +12,7 @@ export interface CardProps extends React.ComponentProps<"div"> {
 
 const Card = ({ className = "", id, title, body, children, ...rest }: CardProps) => {
 	return (
-		<div {...rest} className={clsx(className, styles.card)} id={id}>
+		<div {...rest} className={clsx(className, styles.Card)} id={id}>
 			{!children && (
 				<>
 					<div className={styles.contentWrapper}>

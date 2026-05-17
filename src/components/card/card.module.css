@@ -1,4 +1,4 @@
-.card {
+.Card {
     border-radius: var(--radius-xlg);
     background-color: var(--bg-surface); 
 }

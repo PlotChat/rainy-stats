@@ -1,8 +1,18 @@
-.home {
+.Home {
     container-type: inline-size;
     margin: 0 auto;
     padding: var(--space-xs);
     min-height: 100dvh;
 
     background-color: var(--bg-body);
+}
+
+.Home > * + *{
+    margin-top: var(--space-m);
+}
+
+.main{
+    width: 100%;
+    max-width: 1536px;
+    margin: auto;
 }

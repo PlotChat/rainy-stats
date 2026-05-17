@@ -1,6 +1,7 @@
-.widget {
+.Widget {
 	--edge-font-size: clamp(1.1rem, 5cqi, 2.6rem);
 	--edge-width: clamp(1rem, 0.7589rem + 6.4286cqi, 4.375rem);
+	--edit-remove-btns-width: clamp(1rem, 0.8974rem + 6.5641cqi, 5rem);
 
 	container: widget / inline-size;
 
@@ -20,14 +21,14 @@
 	}
 }
 
-.widget > :not(.edge, .btnsWrapper) {
+.Widget > :not(.WidgetEdge, .btnsWrapper) {
 	width: 100%;
 	height: 100%;
 	min-height: 0;
 	min-width: 0;
 }
 
-.edge {
+.WidgetEdge {
 	position: absolute;
 	display: grid;
 	place-items: center;
@@ -44,7 +45,7 @@
 
 	z-index: 10;
 
-	&.edgeLeft {
+	&.WidgetEdgeLeft {
 		border-radius: var(--radius-xlg) 0 0 var(--radius-xlg);
 		left: 0;
 
@@ -54,7 +55,7 @@
 		}
 	}
 
-	&.edgeRight {
+	&.WidgetEdgeRight {
 		border-radius: 0 var(--radius-xlg) var(--radius-xlg) 0;
 		right: 0;
 
@@ -86,7 +87,7 @@
 
 .editBtn,
 .removeBtn {
-	width: clamp(1rem, 0.8974rem + 6.5641cqi, 5rem);
+	width: var(--edit-remove-btns-width);
 	flex-shrink: 0;
 	padding: var(--space-3xs);
 	color: var(--white);
