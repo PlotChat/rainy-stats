@@ -1,4 +1,4 @@
-.button {
+.Button {
   /* Stripped box-sizing, margin, font-family, and outline:0 */
   display: inline-flex;
   align-items: center;
@@ -31,7 +31,7 @@
   }
 }
 
-.backdrop {
+.Backdrop {
   position: fixed;
   min-height: 100dvh;
   inset: 0;
@@ -55,7 +55,7 @@
   }
 }
 
-.popup {
+.Popup {
   /* Stripped box-sizing */
   position: fixed;
   top: 50%;
@@ -81,20 +81,20 @@
   }
 }
 
-.title {
+.Title {
   /* Stripped margins, rely on the container gap or custom padding */
   font-size: var(--step-1);
   font-weight: 700;
   margin-bottom: var(--space-2xs);
 }
 
-.description {
+.Description {
   font-size: var(--step--1);
   color: color-mix(in srgb, var(--text-inverse) 80%, transparent);
   margin-bottom: var(--space-m);
 }
 
-.actions {
+.Actions {
   display: flex;
   justify-content: flex-end;
   gap: var(--space-s);

@@ -18,7 +18,7 @@ const Button = forwardRef<HTMLElement, ButtonProps>(
             <Base.Button
                 {...rest}
                 ref={ref}
-                className={clsx(styles.button, className)}
+                className={clsx(styles.Button, className)}
                 data-variant={variant}
                 data-intent={intent}
             >

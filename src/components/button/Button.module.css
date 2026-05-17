@@ -1,4 +1,4 @@
-.button {
+.Button {
     appearance: none;
     -webkit-appearance: none;
     display: inline-flex;
@@ -25,7 +25,7 @@
     border: 1px solid var(--btn-border);
 }
 
-.button[data-intent="primary"] {
+.Button[data-intent="primary"] {
     --btn-base-color: var(--bg-primary);
     --btn-bg: var(--btn-base-color);
     --btn-text: var(--text-inverse);
@@ -36,7 +36,7 @@
     --btn-disabled: color-mix(in srgb, var(--btn-base-color), white 20%);
 }
 
-.button[data-variant="hollow"] {
+.Button[data-variant="hollow"] {
     background-color: transparent;
     color: var(--btn-bg);
     border: 1px solid var(--btn-bg);
@@ -52,18 +52,18 @@
     }
 }
 
-.button:active:not([data-disabled]) {
+.Button:active:not([data-disabled]) {
     background-color: var(--btn-active);
     box-shadow: inset 0 1px 3px var(--btn-active);
     border-top-color: var(--btn-border);
 }
 
-.button:focus-visible {
+.Button:focus-visible {
     outline: 2px solid var(--btn-focus);
     outline-offset: -1px;
 }
 
-.button[data-disabled] {
+.Button[data-disabled] {
     opacity: 0.6;
     cursor: not-allowed;
     background-color: var(--btn-disabled, var(--bg-surface));

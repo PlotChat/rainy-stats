@@ -58,7 +58,7 @@ const Widget = ({
 				gridColumn: `span ${widget.colSpan}`,
 				gridRow: `span ${widget.rowSpan}`,
 			}}
-			className={clsx(className, styles[variant], styles.widget)}
+			className={clsx(className, styles[variant], styles.Widget)}
 		>
 			{isEditable && (
 				<WidgetEdge
@@ -124,7 +124,7 @@ const WidgetEdge = forwardRef<HTMLElement, ButtonProps>(
 				{...rest}
 				ref={ref}
 				intent={intent}
-				className={clsx(styles.edge, className)}
+				className={clsx(styles.WidgetEdge, className)}
 			>
 				{children}
 			</Button>
