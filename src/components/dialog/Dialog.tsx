@@ -23,29 +23,29 @@ const Dialog = ({
 }: DialogProps) => {
 	return (
 		<Base.Dialog.Root open={open} onOpenChange={onOpenChange}>
-			<Base.Dialog.Trigger {...rest} className={clsx(styles.Button, className)}>
+			<Base.Dialog.Trigger {...rest} className={clsx(styles.button, className)}>
 				{triggerText}
 			</Base.Dialog.Trigger>
 
 			<Base.Dialog.Portal>
-				<Base.Dialog.Backdrop className={styles.Backdrop} />
-				<Base.Dialog.Popup className={styles.Popup}>
+				<Base.Dialog.Backdrop className={styles.backdrop} />
+				<Base.Dialog.Popup className={styles.popup}>
 					{dialogTitle && (
-						<Base.Dialog.Title className={styles.Title}>
+						<Base.Dialog.Title className={styles.title}>
 							{dialogTitle}
 						</Base.Dialog.Title>
 					)}
 
 					{dialogDescription && (
-						<Base.Dialog.Description className={styles.Description}>
+						<Base.Dialog.Description className={styles.description}>
 							{dialogDescription}
 						</Base.Dialog.Description>
 					)}
 
-					<div className={styles.Content}>{children}</div>
+					<div className={styles.content}>{children}</div>
 
-					<div className={styles.Actions}>
-						<Base.Dialog.Close className={styles.Button}>
+					<div className={styles.actions}>
+						<Base.Dialog.Close className={styles.button}>
 							Close
 						</Base.Dialog.Close>
 					</div>

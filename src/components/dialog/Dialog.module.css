@@ -1,39 +1,37 @@
-.Button {
-  box-sizing: border-box;
-  display: flex;
+.button {
+  /* Stripped box-sizing, margin, font-family, and outline:0 */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 2.5rem;
-  padding: 0 0.875rem;
-  margin: 0;
-  outline: 0;
-  border: 1px solid var(--color-gray-200);
-  border-radius: 0.375rem;
-  background-color: var(--color-gray-50);
-  font-family: inherit;
-  font-size: 1rem;
+  padding: 0 var(--space-s);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-base);
+  font-size: var(--step--1); /* Using your fluid type scale */
   font-weight: 400;
-  line-height: 1.5rem;
-  color: var(--color-gray-900);
+  color: var(--text-primary);
   user-select: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 
   @media (hover: hover) {
     &:hover {
-      background-color: var(--color-gray-100);
+      background-color: var(--bg-surface);
     }
   }
 
   &:active {
-    background-color: var(--color-gray-100);
+    background-color: var(--bg-surface);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-blue);
+    outline: 2px solid var(--border-focus);
     outline-offset: -1px;
   }
 }
 
-.Backdrop {
+.backdrop {
   position: fixed;
   min-height: 100dvh;
   inset: 0;
@@ -42,7 +40,6 @@
   transition: opacity 150ms cubic-bezier(0.45, 1.005, 0, 1.005);
   touch-action: none;
 
-  /* iOS 26+: Ensure the backdrop covers the entire visible viewport. */
   @supports (-webkit-touch-callout: none) {
     position: absolute;
   }
@@ -51,30 +48,30 @@
     opacity: 0.7;
   }
 
+  /* Base UI handles the enter/exit animations via these native attributes */
   &[data-starting-style],
   &[data-ending-style] {
     opacity: 0;
   }
 }
 
-.Popup {
-  box-sizing: border-box;
+.popup {
+  /* Stripped box-sizing */
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 24rem;
   max-width: calc(100vw - 3rem);
-  margin-top: -2rem;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  background-color: var(--brand-dark);
-  color: white;
+  padding: var(--space-m);
+  border-radius: var(--radius-md);
+  background-color: var(--text-secondary); /* Adjust to your dark token */
+  color: var(--text-inverse);
   transition: all 150ms;
   touch-action: none;
 
   @media (prefers-color-scheme: dark) {
-    outline: 1px solid var(--color-gray-300);
+    outline: 1px solid var(--border-subtle);
   }
 
   &[data-starting-style],
@@ -84,24 +81,21 @@
   }
 }
 
-.Title {
-  margin-top: -0.375rem;
-  margin-bottom: 0.25rem;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  letter-spacing: -0.0025em;
+.title {
+  /* Stripped margins, rely on the container gap or custom padding */
+  font-size: var(--step-1);
   font-weight: 700;
+  margin-bottom: var(--space-2xs);
 }
 
-.Description {
-  margin: 0 0 1.5rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: var(--color-gray-600);
+.description {
+  font-size: var(--step--1);
+  color: color-mix(in srgb, var(--text-inverse) 80%, transparent);
+  margin-bottom: var(--space-m);
 }
 
-.Actions {
+.actions {
   display: flex;
-  justify-content: end;
-  gap: 1rem;
+  justify-content: flex-end;
+  gap: var(--space-s);
 }
