@@ -10,7 +10,6 @@ const Home = () => {
 
 	return (
 		<div className={styles.Home}>
-
 			<main className={styles.main}>
 				<WidgetSelector></WidgetSelector>
 				<Dashboard
