@@ -2,7 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import { useWidgetsDataContext } from "../../context/widgets-data-context/WidgetsDataContext";
 import WidgetSelector from "../../features/widgets/components/widget-selector/WidgetSelector";
 import Widget from "../../features/widgets/components/widget/Widget";
-import Dashboard from "../../features/dashboard/Dashboard";
+import Dashboard from "../../features/Dashboard/Dashboard";
 import styles from "./Home.module.css";
 
 const Home = () => {
