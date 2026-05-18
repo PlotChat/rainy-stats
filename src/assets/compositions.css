@@ -1,0 +1,48 @@
+/* =========================================
+   COMPOSITIONS
+   Macro-layouts for managing the flow of blocks
+========================================= */
+
+/* 
+  For vertical rhythm and spacing
+*/
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap, var(--space-m, 1rem));
+}
+
+/* 
+  For grouping items horizontally that wrap gracefully
+*/
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap, var(--space-s, 0.5rem));
+}
+
+/*
+  For pushing items to opposite ends (e.g., Logo & Nav)
+*/
+.repel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap, var(--space-m, 1rem));
+}
+
+/* 
+  For responsive grids without media queries
+*/
+.auto-grid {
+  display: grid;
+  gap: var(--gap, var(--space-m, 1rem));
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--grid-min, 300px), 100%), 1fr)
+  );
+}
+
