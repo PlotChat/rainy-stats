@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./assets/settings.css";
 import "./assets/generic.css";
 import "./assets/elements.css";
+import "./assets/compositions.css";
 import "./assets/utilities.css";
 import App from "./App.tsx";
 import { WidgetsDataProvider } from "./context/widgets-data-context/WidgetsDataProvider.tsx";

@@ -1,5 +1,5 @@
 import Card, { type CardProps } from "../../../../../components/card/Card";
-import styles from "./card-image.module.css";
+import styles from "./CardImage.module.css";
 import { clsx } from "../../../../../utils/clsx";
 
 type CardImageVariant = "column" | "row";
@@ -27,7 +27,7 @@ const CardImage = ({
 	return (
 		<Card
 			{...rest}
-			className={clsx(styles.cardImage, styles[variant], className)}
+			className={clsx(styles.CardImage, styles[variant], className)}
 			onClick={onClick}
 		>
 			<div className={styles.imageWrapper}>
