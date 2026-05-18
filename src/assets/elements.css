@@ -1,4 +1,4 @@
-/* 03-elements.css */
+/* Resets for Elements */
 
 body {
   margin: 0;
@@ -38,3 +38,4 @@ img, picture, video, canvas, svg {
 input, button, textarea, select {
   font: inherit;
 }
+
