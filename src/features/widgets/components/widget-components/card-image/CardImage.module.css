@@ -2,13 +2,10 @@
 .CardImage {
 	container: cardImage / inline-size;
 
+	
 	padding: var(--space-2xs);
 	display: flex;
 	gap: var(--space-2xs);
-
-	@media screen and (width > 31.25rem) {
-		gap: var(--space-xs);
-	}
 }
 
 .title,

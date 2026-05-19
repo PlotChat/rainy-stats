@@ -1,12 +1,13 @@
 import styles from "./app.module.css";
 import Home from "./pages/home/Home";
+import { clsx } from "./utils/clsx";
 
 const App = () => {
 	return (
-		<div className={styles.App}>
+		<main className={clsx("canvas-breakout", "flow", styles.App)}>
 			<Home></Home>
-		</div>
-	)
+		</main>
+	);
 };
 
 export default App;

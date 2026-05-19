@@ -1,29 +1,47 @@
 /* Accessibility: Hide visually, but keep for screen readers */
 .sr-only {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border-width: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border-width: 0 !important;
 }
 
 /* Typography Overrides */
-.text-center { text-align: center !important; }
-.text-left { text-align: left !important; }
-.text-right { text-align: right !important; }
+.text-center {
+	text-align: center !important;
+}
+.text-left {
+	text-align: left !important;
+}
+.text-right {
+	text-align: right !important;
+}
 
 /* Structural Overrides */
 .flush {
-    margin: 0 !important;
-    padding: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.flow > * + * {
+	margin-top: var(--space-m);
+}
+
+.col-full-width{
+    grid-column: full-width;
+}
+
+.col-content{
+    grid-column: content;
 }
 
 .margin-start-auto {
-    margin-inline-start: auto !important;
+	margin-inline-start: auto !important;
 }
 
 /* Visual Testing Tool - Uncomment to debug layout */
