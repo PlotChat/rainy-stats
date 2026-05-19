@@ -46,34 +46,39 @@
 	);
 }
 
-/* Breakout styling */
+/* @link https://utopia.fyi/grid/calculator?c=320,15,1.2,1920,20,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
 :root {
-  --grid-max-width: 77.50rem;
-  --grid-gutter: var(--space-s-l, clamp(0.9375rem, 0.394rem + 2.7174vw, 2.5rem));
-  --grid-columns: 12;
+	--breakout-grid-max-width: 192rem;
+	--breakout-grid-gutter: var(
+		--space-s-l,
+		clamp(0.9375rem, 0.394rem + 2.7174vw, 2.5rem)
+	);
+	--breakout-grid-columns: 12;
 }
 
 .canvas-breakout {
-  display: grid;
-  
-  grid-template-columns:
-    [full-width-start] 
-        minmax(var(--grid-gutter), 1fr) 
-        
-    [content-start] 
-        min(100% - (var(--grid-gutter) * 2), var(--grid-max-width)) 
-        
-    [content-end] 
-        minmax(var(--grid-gutter), 1fr) 
-    [full-width-end];
+  container: canvas / inline-size;
+	display: grid;
+
+	grid-template-columns:
+		[full-width-start]
+		minmax(var(--breakout-grid-gutter), 1fr)
+		[content-start]
+		min(calc(100% - (var(--breakout-grid-gutter) * 2)), var(--breakout-grid-max-width))
+		[content-end]
+		minmax(var(--breakout-grid-gutter), 1fr)
+		[full-width-end];
 }
 
-.canvas > * {
-  grid-column: content;
+.canvas-breakout > * {
+	grid-column: content; 
+	min-width: 0; 
 }
 
 .grid-breakout {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns), 1fr);
-  gap: var(--grid-gutter);
+  container: grid-breakout / inline-size;
+	display: grid;
+	grid-template-columns: repeat(var(--breakout-grid-columns), 1fr);
+	gap: var(--breakout-grid-gutter);
 }
