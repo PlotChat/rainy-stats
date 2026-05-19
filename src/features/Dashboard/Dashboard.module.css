@@ -1,33 +1,29 @@
 .Dashboard {
-    container-type: inline-size; 
-    
-    min-height: 100dvh;
-    width: calc(100vw - 0.5rem);
-    padding: var(--space-m) var(--space-xs);
-
-    @media screen and (width > 600px){
-        padding: var(--space-m) var(--space-xl);
-    }
+	container-type: inline-size;
+  
+	padding-block: var(--space-m);
+	padding-inline: var(--space-s);
 }
 
 .Dashboard[data-variant="grid"] {
-    display: grid;
-    gap: var(--space-s);
-    grid-auto-flow: dense;
-    grid-template-columns: repeat(var(--grid-columns, 8), minmax(0, 1fr));
-
-    --_gap-count: calc(var(--grid-columns) - 1);
-    --_total-gap-width: calc(var(--_gap-count) * var(--space-s));
+	--_gap-count: calc(var(--grid-columns) - 1);
+	--_total-gap-width: calc(var(--_gap-count) * var(--space-s));
     
-    grid-auto-rows: calc(
-        (calc(100vw - 0.5rem) - var(--_total-gap-width)) / var(--grid-columns)
-    );
+	display: grid;
+	gap: var(--space-s);
+	grid-auto-flow: dense;
+
+	grid-template-columns: repeat(var(--grid-columns, 8), minmax(0, 1fr));
+
+	grid-auto-rows: calc(
+		(calc(100cqi - calc(var(--breakout-grid-gutter) * 2) - var(--space-s)) - var(--_total-gap-width)) / var(--grid-columns)
+	);
 }
 
 .emptyState {
-    width: 100%;
-    max-width: 800px;
-    margin-inline: auto;
-    margin-top: var(--space-3xl);
-    padding-inline: var(--space-m);
+	width: 100%;
+	max-width: 800px;
+	margin-inline: auto;
+	margin-top: var(--space-3xl);
+	padding-inline: var(--space-m);
 }
