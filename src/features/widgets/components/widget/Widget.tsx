@@ -64,7 +64,7 @@ const Widget = ({
 				<WidgetEdge
 					onClick={() => handleAddOnClick?.(widgetIndex, "left")}
 					intent="primary"
-					className={clsx(styles.edgeLeft)}
+					className={clsx(styles.WidgetEdgeLeft)}
 				>
 					<span>+</span>
 				</WidgetEdge>
@@ -76,7 +76,7 @@ const Widget = ({
 				<WidgetEdge
 					onClick={() => handleAddOnClick?.(widgetIndex, "right")}
 					intent="primary"
-					className={clsx(styles.edgeRight)}
+					className={clsx(styles.WidgetEdgeRight)}
 				>
 					<span>+</span>
 				</WidgetEdge>
